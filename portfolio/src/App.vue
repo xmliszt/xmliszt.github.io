@@ -1,6 +1,6 @@
 <template>
   <main>
-    <div class="parallax">
+    <div class="parallax" @scroll="this.handleScroll">
       <div class="parallax-background">
         <div>
           <h1>Hi I'm <b>Li Yuxuan</b>. Nice to meet you! 🙌🏻</h1>
@@ -14,7 +14,11 @@
       </div>
     </div>
     <div id="login">
-      <AuthButton ref="authBtn" />
+      <AuthButton
+        ref="authBtn"
+        :style="{ opacity: authBtnOpacity }"
+        :hidden="authBtnHidden"
+      />
     </div>
   </main>
 </template>
@@ -26,31 +30,17 @@ export default {
   components: {
     AuthButton,
   },
+  data() {
+    return {
+      authBtnOpacity: 1,
+      authBtnHidden: false,
+    };
+  },
   methods: {
     handleScroll(e) {
-      console.log(e);
-      const scrollY = window.scrollY;
-      // decreases as user scrolls
-      this.$refs.authButton.value.style.opacity =
-        (100 -
-          (scrollY +
-            window.innerHeight -
-            this.$refs.authButton.value.offsetHeight)) /
-        100;
-      // hides button when user scrolls past it
-      this.$refs.authButton.value.style.visibility =
-        scrollY > this.$refs.authButton.value.offsetHeight
-          ? "hidden"
-          : "visible";
+      this.authBtnOpacity = 1 - (e.target.scrollTop / window.innerHeight) * 2;
+      this.authBtnHidden = e.target.scrollTop > window.innerHeight / 2;
     },
-  },
-  mounted() {
-    window.addEventListener("scroll", (e) => {
-      console.log("scrolling", e);
-    });
-  },
-  unmounted() {
-    window.removeEventListener("scroll", this.handleScroll);
   },
 };
 </script>
