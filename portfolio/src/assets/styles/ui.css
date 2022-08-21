@@ -1,0 +1,19 @@
+@import "./base.css";
+
+:root {
+  --color-background: var(--vt-c-black);
+  --color-background-soft: var(--vt-c-black-soft);
+  --color-background-mute: var(--vt-c-black-mute);
+
+  --color-border: var(--primary-dark);
+  --color-border-hover: var(--secondary-dark);
+
+  --color-primary: var(--primary-dark);
+  --color-secondary: var(--secondary-dark);
+
+  --color-heading: var(--vt-c-text-dark-1);
+  --color-text: var(--vt-c-text-dark-2);
+  --color-dropshadow: var(--drop-shadow-dark);
+
+  --section-gap: 160px;
+}

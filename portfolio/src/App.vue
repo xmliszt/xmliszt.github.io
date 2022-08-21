@@ -1,59 +1,136 @@
 <template>
-  <header>
-    <div class="test rounded-corner box-shadow">
-      <div class="test">
+  <main>
+    <div class="parallax">
+      <div class="parallax-background">
         <div>
-          <h1>HELLO</h1>
-          <h3>THERE</h3>
+          <h1>Hi I'm <b>Li Yuxuan</b>. Nice to meet you! 🙌🏻</h1>
+        </div>
+      </div>
+      <div class="parallax-base">
+        <div>
+          <div class="header-mountain"></div>
+          <div class="background"></div>
         </div>
       </div>
     </div>
-  </header>
-
-  <main></main>
+    <div id="login">
+      <AuthButton ref="authBtn" />
+    </div>
+  </main>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
+<script>
+import AuthButton from "./components/AuthButton.vue";
+
+export default {
+  components: {
+    AuthButton,
+  },
+  methods: {
+    handleScroll(e) {
+      console.log(e);
+      const scrollY = window.scrollY;
+      // decreases as user scrolls
+      this.$refs.authButton.value.style.opacity =
+        (100 -
+          (scrollY +
+            window.innerHeight -
+            this.$refs.authButton.value.offsetHeight)) /
+        100;
+      // hides button when user scrolls past it
+      this.$refs.authButton.value.style.visibility =
+        scrollY > this.$refs.authButton.value.offsetHeight
+          ? "hidden"
+          : "visible";
+    },
+  },
+  mounted() {
+    window.addEventListener("scroll", (e) => {
+      console.log("scrolling", e);
+    });
+  },
+  unmounted() {
+    window.removeEventListener("scroll", this.handleScroll);
+  },
+};
+</script>
+
+<style>
+.parallax {
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100vh;
+  width: 100vw;
+  max-width: 100%;
+  perspective: 1px;
+  -webkit-perspective: 1px;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
 }
 
-.logo {
+div[class*="parallax-"] {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.parallax-background > div {
   display: block;
-  margin: 0 auto 2rem;
+  height: 100vh;
+  background: url("./assets/images/bg-header.jpg") top center;
+  background-size: cover;
 }
 
-.test {
-  width: 70vw;
-  height: 50vh;
-  background-color: var(--primary-dark);
+.parallax-background div > h1 {
+  max-width: 80vw;
+  position: absolute;
+  top: 35vh;
+  left: 10vw;
 }
 
-.test .test {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--vt-c-text-light-1);
-  text-align: center;
+@media (max-width: 1136px) {
+  .parallax-background div > h1 {
+    top: 25vh;
+  }
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+@media (max-width: 800px) {
+  .parallax-background div > h1 {
+    top: 15vh;
   }
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+div.parallax-background {
+  transform: translateZ(-1px) scale(2.1);
+  -webkit-transform: translateZ(-1px) scale(2.1);
+}
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+div.parallax-base {
+  padding: 30vh 0px 0px 0px;
+  transform: translateZ(0px);
+  -webkit-transform: translateZ(0);
+}
+
+.header-mountain {
+  height: calc(100vw * 0.4757);
+  background: url("./assets/images/bg-mount.png") no-repeat top center;
+  background-size: cover;
+  border: none;
+}
+
+.background {
+  margin: -10px;
+  height: 100vh;
+  background-color: #1e3136;
+  border: none;
+}
+
+#login {
+  display: block;
+  position: absolute;
+  top: 35px;
+  right: 40px;
 }
 </style>
