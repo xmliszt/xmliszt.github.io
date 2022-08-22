@@ -6,6 +6,11 @@
           <h1>Hi I'm <b>Li Yuxuan</b>. Nice to meet you! 🙌🏻</h1>
         </div>
       </div>
+      <div class="parallax-fixed">
+        <div>
+          <AvatarView />
+        </div>
+      </div>
       <div class="parallax-base">
         <div>
           <div class="header-mountain"></div>
@@ -25,10 +30,12 @@
 
 <script>
 import AuthButton from "./components/AuthButton.vue";
+import AvatarView from "./components/AvatarView.vue";
 
 export default {
   components: {
     AuthButton,
+    AvatarView,
   },
   data() {
     return {
@@ -52,8 +59,8 @@ export default {
   height: 100vh;
   width: 100vw;
   max-width: 100%;
-  perspective: 1px;
-  -webkit-perspective: 1px;
+  perspective: 2px;
+  -webkit-perspective: 2px;
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
 }
@@ -74,33 +81,26 @@ div[class*="parallax-"] {
 }
 
 .parallax-background div > h1 {
-  max-width: 80vw;
+  max-width: 40vw;
   position: absolute;
-  top: 35vh;
+  top: 30vh;
   left: 10vw;
 }
 
-@media (max-width: 1136px) {
-  .parallax-background div > h1 {
-    top: 25vh;
-  }
-}
-
-@media (max-width: 800px) {
-  .parallax-background div > h1 {
-    top: 15vh;
-  }
-}
-
 div.parallax-background {
-  transform: translateZ(-1px) scale(2.1);
-  -webkit-transform: translateZ(-1px) scale(2.1);
+  transform: translateZ(-2px) scale(2.1);
+  -webkit-transform: translateZ(-2px) scale(2.1);
 }
 
 div.parallax-base {
   padding: 30vh 0px 0px 0px;
-  transform: translateZ(0px);
+  transform: translateZ(0);
   -webkit-transform: translateZ(0);
+}
+
+div.parallax-fixed {
+  transform: translateZ(-1px) scale(1.5);
+  -webkit-transform: translateZ(-1px) scale(1.5);
 }
 
 .header-mountain {
@@ -117,10 +117,34 @@ div.parallax-base {
   border: none;
 }
 
+.parallax-fixed > div {
+  display: flex;
+  justify-content: center;
+  padding-top: 20vh;
+  padding-left: 50vw;
+}
+
 #login {
   display: block;
   position: absolute;
   top: 35px;
   right: 40px;
+}
+
+@media (max-width: 1024px) {
+  .parallax-background div > h1 {
+    top: 25vh;
+    max-width: 50vw;
+  }
+  #avatar {
+    top: 15vh;
+    left: calc(70vw - 50px);
+  }
+}
+
+@media (max-width: 800px) {
+  .parallax-background div > h1 {
+    top: 20vh;
+  }
 }
 </style>
