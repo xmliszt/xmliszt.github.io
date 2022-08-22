@@ -41,7 +41,7 @@
 
 body {
   color: var(--color-text);
-  background: var(--color-background);
+  background-color: #1e3136;
   transition: color 0.5s, background-color 0.5s;
   line-height: 1.6;
   font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -52,4 +52,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }

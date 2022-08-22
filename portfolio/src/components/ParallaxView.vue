@@ -1,13 +1,18 @@
 <template>
-  <div class="parallax">
+  <div
+    class="parallax"
+    :class="[scrollingEnable ? scrollingEnableClass : scrollingDisableClass]"
+    ref="parallax"
+    @scroll="this.handleScroll"
+  >
     <div class="parallax-background">
       <div>
-        <h1>Hi I'm <b>Li Yuxuan</b>. Nice to meet you! 🙌🏻</h1>
+        <h1>Hi! I'm Li Yuxuan. Nice to meet you! 🙌🏻</h1>
       </div>
     </div>
     <div class="parallax-fixed">
       <div>
-        <AvatarView />
+        <AvatarView ref="avatarView" />
       </div>
     </div>
     <div class="parallax-base">
@@ -25,13 +30,29 @@ export default {
   components: {
     AvatarView,
   },
+  data() {
+    return {
+      scrollingEnable: true,
+      scrollingEnableClass: "scrolling-enable",
+      scrollingDisableClass: "scrolling-disable",
+    };
+  },
+  methods: {
+    handleScroll({ target: { scrollTop, clientHeight, scrollHeight } }) {
+      if (scrollTop + clientHeight >= scrollHeight) {
+        this.scrollingEnable = false;
+      }
+    },
+    enableScroll() {
+      this.scrollingEnable = true;
+    },
+  },
 };
 </script>
 
 <style scoped>
 .parallax {
   overflow-x: hidden;
-  overflow-y: auto;
   height: 100vh;
   width: 100vw;
   max-width: 100%;
@@ -39,6 +60,18 @@ export default {
   -webkit-perspective: 2px;
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
+}
+
+.scrolling-enable {
+  overflow-y: auto;
+}
+
+.scrolling-disable {
+  overflow-y: hidden;
+}
+
+.parallax::-webkit-scrollbar {
+  display: none;
 }
 
 div[class*="parallax-"] {
@@ -89,9 +122,23 @@ div.parallax-fixed {
 
 .background {
   margin: -10px;
-  height: 100vh;
+  height: 50vh;
   background-color: #1e3136;
   border: none;
+}
+
+@media (max-width: 1024px) {
+  .parallax {
+    height: 100vh;
+  }
+
+  .background {
+    height: 70vh;
+  }
+
+  .header-mountain {
+    height: calc(100vh * 0.7);
+  }
 }
 
 .parallax-fixed > div {
