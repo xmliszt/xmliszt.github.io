@@ -1,23 +1,6 @@
 <template>
   <main>
-    <div class="parallax" @scroll="this.handleScroll">
-      <div class="parallax-background">
-        <div>
-          <h1>Hi I'm <b>Li Yuxuan</b>. Nice to meet you! 🙌🏻</h1>
-        </div>
-      </div>
-      <div class="parallax-fixed">
-        <div>
-          <AvatarView />
-        </div>
-      </div>
-      <div class="parallax-base">
-        <div>
-          <div class="header-mountain"></div>
-          <div class="background"></div>
-        </div>
-      </div>
-    </div>
+    <ParallaxView @scroll="this.handleScroll" />
     <div id="login">
       <AuthButton
         ref="authBtn"
@@ -30,12 +13,12 @@
 
 <script>
 import AuthButton from "./components/AuthButton.vue";
-import AvatarView from "./components/AvatarView.vue";
+import ParallaxView from "./components/ParallaxView.vue";
 
 export default {
   components: {
     AuthButton,
-    AvatarView,
+    ParallaxView,
   },
   data() {
     return {
