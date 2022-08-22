@@ -47,7 +47,7 @@ export default {
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
 }
-/* 
+
 .parallax div {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -57,7 +57,7 @@ export default {
   -o-user-select: none;
   user-select: none;
   outline: none;
-} */
+}
 
 div[class*="parallax-"] {
   bottom: 0;
