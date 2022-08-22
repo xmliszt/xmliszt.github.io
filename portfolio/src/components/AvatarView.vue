@@ -1,5 +1,5 @@
 <template>
-  <div class="avatar drop-shadow">
+  <div class="avatar drop-shadow morph-hover-effect">
     <img :src="imgUrl" :alt="imgAlt" />
   </div>
 </template>
@@ -19,8 +19,12 @@ export default {
 .avatar {
   width: 200px;
   height: 200px;
+  overflow: hidden;
   border-radius: 50%;
   border: 5px solid var(--color-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (max-width: 768px) {
@@ -31,8 +35,7 @@ export default {
 }
 
 .avatar img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
+  width: 120%;
+  height: 120%;
 }
 </style>

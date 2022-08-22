@@ -48,6 +48,12 @@
   transition-timing-function: ease-in-out;
 }
 
+.morph-hover-effect {
+  border-radius: 50%;
+  transition: border-radius 0.26s;
+  transition-timing-function: ease-in-out;
+}
+
 .drop-shadow {
   box-shadow: var(--color-dropshadow) 0px 7px 29px 0px;
 }

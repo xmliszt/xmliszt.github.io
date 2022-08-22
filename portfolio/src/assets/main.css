@@ -13,6 +13,12 @@
     transition-timing-function: ease-in-out;
   }
 
+  .morph-hover-effect:hover {
+    border-radius: 10%;
+    transition: border-radius 0.26s;
+    transition-timing-function: ease-in-out;
+  }
+
   button:hover {
     cursor: pointer;
     background-position: right center; /* change the direction of the change here */
