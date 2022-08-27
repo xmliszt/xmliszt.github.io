@@ -17,7 +17,6 @@
 </template>
 
 <script>
-import { faL } from "@fortawesome/free-solid-svg-icons";
 import FishTag from "./generic/FishTag.vue";
 
 export default {

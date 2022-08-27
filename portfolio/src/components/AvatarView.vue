@@ -5,10 +5,11 @@
 </template>
 
 <script>
+import avatarImg from "/src/assets/images/avatar.jpeg";
 export default {
   data() {
     return {
-      imgUrl: "/src/assets/images/avatar.jpeg",
+      imgUrl: avatarImg,
       imgAlt: "No Image",
     };
   },
