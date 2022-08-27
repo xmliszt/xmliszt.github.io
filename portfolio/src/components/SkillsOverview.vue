@@ -8,7 +8,7 @@
         >
       </p>
     </div>
-    <FishTag class="drop-shadow-dark" :label="displayedTag" />
+    <FishTag class="fish-tag drop-shadow-dark" :label="displayedTag" />
   </div>
 </template>
 
@@ -111,6 +111,24 @@ export default {
   padding: 10px 20px;
   margin: 20px;
   border-radius: 20px;
+}
+
+.fish-tag {
+  margin-top: 0px;
+  transform: rotateX(0deg);
+  /* transition: margin-top 200ms; */
+  border-bottom: 0px solid var(--color-accent);
+  transition: all 200ms ease-in-out;
+}
+
+@media (hover: hover) {
+  .fish-tag:hover,
+  .typewriter:hover + .fish-tag {
+    border-radius: 0px;
+    background-color: var(--color-accent);
+    border-color: white;
+    color: white;
+  }
 }
 
 .typewriter span.typed-text {
