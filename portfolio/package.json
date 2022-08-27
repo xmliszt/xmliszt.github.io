@@ -5,7 +5,7 @@
     "dev": "vite",
     "dev2": "vite --host",
     "build": "vite build",
-    "staging": "vite build && bash staging.sh",
+    "staging": "vite build --base=/staging/ && bash staging.sh",
     "preview": "vite preview --port 4173",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
