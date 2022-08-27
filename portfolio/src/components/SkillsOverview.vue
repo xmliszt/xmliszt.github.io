@@ -8,11 +8,16 @@
         >
       </p>
     </div>
-    <FishTag class="fish-tag drop-shadow-dark" :label="displayedTag" />
+    <FishTag
+      class="fish-tag drop-shadow-dark"
+      :class="[isWaiting ? hideClass : showClass]"
+      :label="displayedTag"
+    />
   </div>
 </template>
 
 <script>
+import { faL } from "@fortawesome/free-solid-svg-icons";
 import FishTag from "./generic/FishTag.vue";
 
 export default {
@@ -26,6 +31,9 @@ export default {
       currentSkillIndex: 0,
       isTyping: true,
       isTypingClass: "typing",
+      isWaiting: false,
+      showClass: "show",
+      hideClass: "hide",
       typedOutText: "",
       displayedTag: "",
       skills: [
@@ -50,9 +58,10 @@ export default {
     buildSentence(skill) {
       return `${skill.verb} ${skill.adj} ${skill.noun} using ${skill.tools
         .slice(1)
-        .reduce((prev, crrt) => prev + ", " + crrt, skill.tools[0])}`;
+        .reduce((prev, crrt) => prev + ", " + crrt, skill.tools[0])}.`;
     },
     startTyping() {
+      this.isWaiting = false;
       let currentSkillObj = this.skills[this.currentSkillIndex];
       let currentSentence = this.buildSentence(currentSkillObj);
       this.displayedTag = currentSkillObj.category;
@@ -78,6 +87,7 @@ export default {
         this.currentSkillIndex++;
         if (this.currentSkillIndex >= this.skills.length)
           this.currentSkillIndex = 0;
+        this.isWaiting = true;
         setTimeout(this.startTyping, this.typingDelay + 1100);
       }
     },
@@ -119,6 +129,14 @@ export default {
   /* transition: margin-top 200ms; */
   border-bottom: 0px solid var(--color-accent);
   transition: all 200ms ease-in-out;
+}
+
+.fish-tag.show {
+  opacity: 1;
+}
+
+.fish-tag.hide {
+  opacity: 0;
 }
 
 @media (hover: hover) {
