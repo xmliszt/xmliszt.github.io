@@ -53,10 +53,6 @@ export default {
 </script>
 
 <style>
-main {
-  overflow: scroll;
-}
-
 section {
   height: 100vh;
   margin-top: var(--section-gap);
