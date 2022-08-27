@@ -10,8 +10,8 @@
   --secondary-light: var(--color-white-secondary);
   --secondary-dark: var(--color-black-secondary);
 
-  --drop-shadow-light: rgba(100, 100, 111, 0.8);
-  --drop-shadow-dark: rgba(240, 240, 240, 0.8);
+  --drop-shadow-dark: rgba(24, 24, 24, 0.8);
+  --drop-shadow-light: rgba(240, 240, 240, 0.8);
 
   --vt-c-white: var(--color-white);
   --vt-c-white-soft: #f8f8f8;
@@ -39,14 +39,19 @@
   --font-mini: 10px;
 }
 
+@font-face {
+  font-family: "SF Pro Text";
+  src: local("SF Pro Text"), url("/src/fonts/SF\ Pro/SF-Pro-Text-Bold.otf");
+}
+
 body {
   color: var(--color-text);
   background-color: #1e3136;
   transition: color 0.5s, background-color 0.5s;
   line-height: 1.6;
-  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "SF Pro Text", Inter, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
   font-size: 15px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;

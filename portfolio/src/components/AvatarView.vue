@@ -1,5 +1,5 @@
 <template>
-  <div class="avatar drop-shadow morph-hover-effect">
+  <div class="avatar drop-shadow-light morph-hover-effect">
     <img :src="imgUrl" :alt="imgAlt" />
   </div>
 </template>

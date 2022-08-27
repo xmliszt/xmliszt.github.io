@@ -11,6 +11,7 @@
     <section id="skills">
       <SkillsOverview />
     </section>
+    <section id="projects">PROJECTS</section>
   </main>
 </template>
 
@@ -52,6 +53,11 @@ export default {
 </script>
 
 <style>
+section {
+  height: 100vh;
+  margin-top: var(--section-gap);
+}
+
 #login {
   display: block;
   position: absolute;
@@ -61,6 +67,5 @@ export default {
 
 #skills {
   position: relative;
-  height: 100vh;
 }
 </style>

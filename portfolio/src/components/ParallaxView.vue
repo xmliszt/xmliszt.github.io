@@ -18,6 +18,10 @@
     <div class="parallax-base">
       <div>
         <div class="header-mountain"></div>
+        <div class="keep-scrolling">
+          <FontAwesomeIcon icon="fa-solid fa-angles-down" />
+          <div>Keep Scrolling</div>
+        </div>
         <div class="background"></div>
       </div>
     </div>
@@ -26,9 +30,12 @@
 
 <script>
 import AvatarView from "./AvatarView.vue";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+
 export default {
   components: {
     AvatarView,
+    FontAwesomeIcon,
   },
   data() {
     return {
@@ -118,6 +125,27 @@ div.parallax-fixed {
   background: url("../assets/images/bg-mount.png") no-repeat top center;
   background-size: cover;
   border: none;
+}
+
+.keep-scrolling {
+  text-align: center;
+  position: absolute;
+  bottom: 70px;
+  left: 0px;
+  width: 100%;
+  animation: blink 2s infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 .background {

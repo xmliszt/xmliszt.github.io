@@ -36,8 +36,6 @@ h1 {
   font-size: var(--font-large);
 }
 
-p,
-span,
 a {
   font-size: var(--font-regular);
 }
@@ -45,10 +43,6 @@ a {
 @media (max-width: 1024px) {
   h1 {
     font-size: var(--font-regular);
-  }
-
-  p {
-    font-size: var(--font-small);
   }
 }
 

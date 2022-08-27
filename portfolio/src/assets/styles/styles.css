@@ -54,8 +54,12 @@
   transition-timing-function: ease-in-out;
 }
 
-.drop-shadow {
-  box-shadow: var(--color-dropshadow) 0px 7px 29px 0px;
+.drop-shadow-light {
+  box-shadow: var(--drop-shadow-light) 0px 7px 29px 0px;
+}
+
+.drop-shadow-dark {
+  box-shadow: var(--drop-shadow-dark) 0px 7px 29px 0px;
 }
 
 .icon-button {
@@ -73,4 +77,37 @@
   color: inherit;
   transition: 0.26s;
   transition-timing-function: ease-in-out;
+}
+
+.gradient-roll {
+  background: linear-gradient(
+    #cf5c5c,
+    #c19b4a,
+    #def2a0,
+    #c6ee4a,
+    #42eca6,
+    #00f7fff7,
+    #64b3d9,
+    #208ea2,
+    #498ada,
+    #5b73df,
+    #897ed3,
+    #9000ff,
+    #cf5c5c,
+    #c19b4a
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 100% 1100%;
+  animation: gradientRoll 5s infinite;
+}
+
+@keyframes gradientRoll {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 0% 100%;
+  }
 }
