@@ -1,5 +1,5 @@
 <template>
-  <div class="fish-card">
+  <div ref="fishCard" class="fish-card" @click="interact">
     <div class="fish-card-bg" :style="setBackgroundStyles()"></div>
     <div class="glow"></div>
     <div class="fish-card-overlay">
@@ -22,6 +22,9 @@ export default {
     FontAwesomeIcon,
   },
   props: ["project"],
+  data() {
+    return { interactionRemovalDelay: 2000 };
+  },
   methods: {
     setBackgroundStyles() {
       return {
@@ -37,14 +40,42 @@ export default {
         filter: "blur(0px)",
         "-webkit-filter": "blur(0px)",
         transition: "all 0.5s",
+        "pointer-events": "none",
       };
     },
     directTo() {
       window.open(this.project.link, "__blank");
     },
+    interact() {
+      this.$refs.fishCard.classList.add("interaction");
+      setTimeout(() => {
+        this.$refs.fishCard.classList.remove("interaction");
+      }, this.interactionRemovalDelay);
+    },
   },
 };
 </script>
+
+<style>
+.interaction {
+  animation: interact 1s ease-in-out both;
+}
+
+@keyframes interact {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  40% {
+    transform: rotate(5deg) scale(1.1);
+  }
+  70% {
+    transform: rotate(-5deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+</style>
 
 <style scoped>
 .fish-card {
