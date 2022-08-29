@@ -6,11 +6,21 @@
       <span class="title">{{ project.title }}</span>
       <span class="details">{{ project.details }}</span>
     </div>
+    <div class="fish-card-expand hover-effect" @click="directTo">
+      <div class="circle"><FontAwesomeIcon icon="fa-regular fa-circle" /></div>
+      <div class="plus">
+        <FontAwesomeIcon icon="fa-solid fa-plus" />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 export default {
+  components: {
+    FontAwesomeIcon,
+  },
   props: ["project"],
   methods: {
     setBackgroundStyles() {
@@ -28,6 +38,9 @@ export default {
         "-webkit-filter": "blur(0px)",
         transition: "all 0.5s",
       };
+    },
+    directTo() {
+      window.open(this.project.link, "__blank");
     },
   },
 };
@@ -61,7 +74,7 @@ export default {
 .fish-card div.fish-card-overlay {
   box-sizing: border-box;
   position: absolute;
-  height: 50%;
+  height: auto;
   width: 100%;
   bottom: -50%;
   left: 0px;
@@ -74,7 +87,7 @@ export default {
   );
   transition-property: bottom;
   transition-duration: 300ms;
-  padding: 25px;
+  padding: 20px 50px 25px 25px;
 }
 
 span {
@@ -85,8 +98,41 @@ span.title {
   margin-bottom: 20px;
 }
 
-span.detials {
-  font-size: var(--font-small);
+span.details {
+  font-size: var(--font-regular);
+}
+
+.fish-card div.fish-card-expand {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 12px;
+  bottom: 12px;
+  width: 50px;
+  aspect-ratio: 1;
+}
+
+.fish-card-expand div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  aspect-ratio: 1;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+}
+
+.fish-card-expand > .circle {
+  z-index: 1;
+  transform: scale(1);
+  transition: transform 0.3s ease-in-out;
+}
+.fish-card-expand > .plus {
+  z-index: 2;
+  opacity: 0;
+  transform: rotate(0deg);
+  transition: all 0.3s ease-in-out;
 }
 
 @media (hover: hover) {
@@ -108,15 +154,35 @@ span.detials {
   .fish-card:hover div.fish-card-overlay {
     bottom: 0px;
   }
+
+  .fish-card-expand:hover {
+    cursor: pointer;
+  }
+
+  .fish-card-expand:hover > .circle {
+    transform: scale(1.5);
+  }
+
+  .fish-card-expand:hover > .plus {
+    opacity: 1;
+    transform: rotate(180deg);
+  }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1368px) {
+  span.title {
+    font-size: var(--font-regular);
+    margin-bottom: 12px;
+  }
+
+  span.details {
+    font-size: var(--font-small);
+  }
   .fish-card {
     width: 80vw;
   }
 
   .fish-card div.fish-card-overlay {
-    height: 100%;
     bottom: 0px;
     background: linear-gradient(
       0deg,
@@ -128,6 +194,13 @@ span.detials {
   .fish-card div.fish-card-bg {
     filter: blur(1px);
     -webkit-filter: blur(1px);
+  }
+
+  .fish-card-expand > .circle {
+    transform: scale(1.5);
+  }
+  .fish-card-expand > .plus {
+    opacity: 1;
   }
 }
 </style>

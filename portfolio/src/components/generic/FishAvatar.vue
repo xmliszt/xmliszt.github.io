@@ -28,7 +28,7 @@ export default {
   align-items: center;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1368px) {
   .avatar {
     width: 100px;
     height: 100px;

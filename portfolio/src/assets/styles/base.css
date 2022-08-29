@@ -34,9 +34,9 @@
 
 :root {
   --font-large: 1.5rem;
-  --font-regular: 0.7rem;
-  --font-small: 0.3rem;
-  --font-mini: 0.1rem;
+  --font-regular: 1rem;
+  --font-small: 0.7rem;
+  --font-mini: 0.5rem;
 }
 
 @font-face {
