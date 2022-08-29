@@ -40,12 +40,6 @@ a {
   font-size: var(--font-regular);
 }
 
-@media (max-width: 1024px) {
-  h1 {
-    font-size: var(--font-regular);
-  }
-}
-
 button {
   background-image: linear-gradient(
     to right,

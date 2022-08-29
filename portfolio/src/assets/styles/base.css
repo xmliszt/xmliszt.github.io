@@ -33,10 +33,10 @@
 }
 
 :root {
-  --font-large: 40px;
-  --font-regular: 24px;
-  --font-small: 14px;
-  --font-mini: 10px;
+  --font-large: 1.5rem;
+  --font-regular: 0.7rem;
+  --font-small: 0.3rem;
+  --font-mini: 0.1rem;
 }
 
 @font-face {
