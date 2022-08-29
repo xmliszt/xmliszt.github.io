@@ -33,7 +33,13 @@
 }
 
 h1 {
-  font-size: var(--font-large);
+  font-size: 2rem;
+}
+
+@media (max-width: 1368px) {
+  h1 {
+    font-size: var(--font-large);
+  }
 }
 
 a {

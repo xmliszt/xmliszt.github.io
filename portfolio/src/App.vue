@@ -92,7 +92,7 @@ export default {
 <style>
 section {
   height: 100vh;
-  margin-top: var(--section-gap);
+  margin-bottom: var(--section-gap);
 }
 
 #login {
@@ -114,10 +114,10 @@ section {
   display: grid;
   justify-content: center;
   grid-template-columns: auto auto;
-  grid-gap: 2rem;
+  grid-gap: 4rem;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1368px) {
   #projects > div {
     grid-template-columns: auto;
   }
