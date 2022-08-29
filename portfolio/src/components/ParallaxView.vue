@@ -12,7 +12,7 @@
     </div>
     <div class="parallax-fixed">
       <div>
-        <AvatarView ref="avatarView" />
+        <FishAvatar ref="avatarView" />
       </div>
     </div>
     <div class="parallax-base">
@@ -29,12 +29,12 @@
 </template>
 
 <script>
-import AvatarView from "./AvatarView.vue";
+import FishAvatar from "./generic/FishAvatar.vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 export default {
   components: {
-    AvatarView,
+    FishAvatar,
     FontAwesomeIcon,
   },
   data() {
