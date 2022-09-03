@@ -36,7 +36,6 @@ export default {
             GoogleAuthProvider.credentialFromResult(userCredential);
           this.token = credential.accessToken;
           this.user = userCredential.user;
-          localStorage.setItem("uid", userCredential.user.uid);
         })
         .catch((err) => {
           console.log(err.message);
@@ -54,7 +53,6 @@ export default {
         this.isLoggedIn = false;
         this.user = null;
         this.token = null;
-        localStorage.removeItem("uid");
         console.log("logged out successfully");
       } catch (error) {
         console.log(error.message);
