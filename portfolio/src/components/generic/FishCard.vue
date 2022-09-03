@@ -1,5 +1,5 @@
 <template>
-  <div ref="fishCard" class="fish-card" @click="interact">
+  <div ref="fishCard" class="fish-card" @click="directTo">
     <div class="fish-card-bg" :style="setBackgroundStyles()"></div>
     <div class="glow"></div>
     <div class="fish-card-overlay">
@@ -66,10 +66,10 @@ export default {
     transform: rotate(0deg) scale(1);
   }
   40% {
-    transform: rotate(5deg) scale(1.1);
+    transform: rotate(2deg) scale(1.05);
   }
   70% {
-    transform: rotate(-5deg) scale(1.1);
+    transform: rotate(-2deg) scale(1.05);
   }
   100% {
     transform: rotate(0deg) scale(1);
@@ -173,6 +173,7 @@ span.details {
   }
 
   .fish-card:hover {
+    cursor: pointer;
     box-shadow: var(--drop-shadow-dark) 0px 0px 0px 0px;
   }
 

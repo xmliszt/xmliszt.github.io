@@ -22,9 +22,9 @@ export default {
   data() {
     return {
       typingDelayMin: 10,
-      typingDelayMax: 200,
-      erasingDelay: 50,
-      newSentenceDelay: 2000,
+      typingDelayMax: 150,
+      erasingDelay: 20,
+      newSentenceDelay: 3000,
       charIndex: 0,
       currentSkillIndex: 0,
       isTyping: true,
@@ -78,6 +78,16 @@ export default {
     if (this.skills.length > 0) {
       setTimeout(this.startTyping, this.newSentenceDelay + 250);
     }
+  },
+  watch: {
+    skills: {
+      immediate: true,
+      handler(newValue) {
+        if (newValue.length > 0) {
+          setTimeout(this.startTyping, this.newSentenceDelay + 250);
+        }
+      },
+    },
   },
 };
 </script>

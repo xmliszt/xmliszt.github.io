@@ -16,38 +16,34 @@
 </template>
 
 <script>
+import { getTaglines } from "../services/TaglineService";
 import FishTag from "./generic/FishTag.vue";
 import FishTypeWriter from "./generic/FishTypeWriter.vue";
 
 export default {
   components: { FishTag, FishTypeWriter },
+  created() {
+    this._getTaglines();
+  },
   data() {
     return {
       displayedTag: "",
       isWaiting: false,
       tagShowClass: "show",
       tagHideClass: "hide",
-      skills: [
-        {
-          category: "technology",
-          verb: "develop",
-          adj: "",
-          noun: "static websites",
-          tools: ["JavaScript", "HTML", "CSS", "VueJS framework"],
-        },
-        {
-          category: "photography",
-          verb: "take",
-          adj: "beautiful",
-          noun: "photos",
-          tools: ["O-EM10 MKII", "Photoshop", "Lightroom"],
-        },
-      ],
+      skills: [],
     };
   },
   methods: {
     onTypeWriterSentenceChanged(skill) {
       this.displayedTag = skill.category;
+    },
+    async _getTaglines() {
+      try {
+        this.skills = await getTaglines();
+      } catch (err) {
+        alert(err.message);
+      }
     },
   },
 };

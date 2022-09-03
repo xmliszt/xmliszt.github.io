@@ -29,6 +29,7 @@ import AuthButton from "./components/AuthButton.vue";
 import ParallaxView from "./components/ParallaxView.vue";
 import SkillsOverview from "./components/SkillsOverview.vue";
 import FishCard from "./components/generic/FishCard.vue";
+import { getProjects } from "./services/ProjectService";
 
 export default {
   components: {
@@ -41,32 +42,7 @@ export default {
     return {
       authBtnOpacity: 1,
       authBtnHidden: false,
-      projects: [
-        {
-          title: "Resume Generator",
-          details:
-            "Resume Generator produces resume based on your data uploaded. Writing resume cannot be simpler!",
-          imgUrl:
-            "https://images.unsplash.com/photo-1661630807560-654a6b3735bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80",
-          link: "https://www.google.com",
-        },
-        {
-          title: "Portfolio",
-          details:
-            "My very own portfolio website. A playground for CSS animations. I aim to achieve 'Apple-like' user experience.",
-          imgUrl:
-            "https://images.unsplash.com/photo-1556656793-08538906a9f8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
-          link: "https://www.google.com",
-        },
-        {
-          title: "iPhone 14 Simulator",
-          details:
-            "No money to buy an iPhone 14? No worries! This simulator will give you first-hand virtual experience of owning an iPhone 14.",
-          imgUrl:
-            "https://images.unsplash.com/photo-1523206489230-c012c64b2b48?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
-          link: "https://www.google.com",
-        },
-      ],
+      projects: [],
     };
   },
   methods: {
@@ -79,6 +55,17 @@ export default {
         this.$refs.parallaxView.enableScroll();
       }
     },
+    async loadProjects() {
+      try {
+        this.projects = await getProjects();
+      } catch (err) {
+        alert(err.message);
+      }
+    },
+  },
+  created() {
+    // TODO: Call these methods via the scroll controller based on scrolling position instead
+    this.loadProjects();
   },
   mounted() {
     document.addEventListener("scroll", this.handleMainScroll);
