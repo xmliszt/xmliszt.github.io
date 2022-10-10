@@ -7,7 +7,7 @@ import {
   faArrowRightToBracket,
   faArrowUpRightFromSquare,
   faAnglesDown,
-  faPlus,
+  faExpand,
 } from "@fortawesome/free-solid-svg-icons";
 import { faCircle } from "@fortawesome/free-regular-svg-icons";
 
@@ -16,7 +16,7 @@ library.add(
   faArrowUpRightFromSquare,
   faAnglesDown,
   faCircle,
-  faPlus
+  faExpand
 );
 
 createApp(App).mount("#app");

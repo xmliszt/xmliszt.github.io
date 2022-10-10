@@ -28,7 +28,7 @@ export default {
   data() {
     return {
       displayedTag: "",
-      isWaiting: false,
+      isWaiting: true,
       tagShowClass: "show",
       tagHideClass: "hide",
       skills: [],
@@ -76,8 +76,7 @@ export default {
 }
 
 @media (hover: hover) {
-  .fish-tag:hover,
-  .typewriter:hover + .fish-tag {
+  .fish-tag:hover {
     border-radius: 0px;
     background-color: var(--color-accent);
     border-color: white;

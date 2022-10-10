@@ -21,6 +21,9 @@
         />
       </div>
     </section>
+    <section id="photography">
+      <div>Photo</div>
+    </section>
   </main>
 </template>
 
@@ -78,7 +81,7 @@ export default {
 
 <style>
 section {
-  height: 100vh;
+  min-height: 100vh;
   margin-bottom: var(--section-gap);
 }
 

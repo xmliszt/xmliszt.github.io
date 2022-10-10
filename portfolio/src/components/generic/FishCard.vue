@@ -1,15 +1,14 @@
 <template>
   <div ref="fishCard" class="fish-card" @click="directTo">
-    <div class="fish-card-bg" :style="setBackgroundStyles()"></div>
+    <div class="fish-card-bg" :style="setBackground()"></div>
     <div class="glow"></div>
     <div class="fish-card-overlay">
       <span class="title">{{ project.title }}</span>
       <span class="details">{{ project.details }}</span>
     </div>
     <div class="fish-card-expand hover-effect" @click="directTo">
-      <div class="circle"><FontAwesomeIcon icon="fa-regular fa-circle" /></div>
       <div class="plus">
-        <FontAwesomeIcon icon="fa-solid fa-plus" />
+        <FontAwesomeIcon icon="fa-solid fa-expand" />
       </div>
     </div>
   </div>
@@ -26,21 +25,9 @@ export default {
     return { interactionRemovalDelay: 2000 };
   },
   methods: {
-    setBackgroundStyles() {
+    setBackground() {
       return {
-        background: `url(${this.project.imgUrl}) no-repeat center center`,
-        position: "absolute",
-        top: 0,
-        left: 0,
-        "background-size": "cover",
-        width: "100%",
-        height: "100%",
-        overflow: "hidden",
-        opacity: 0.7,
-        filter: "blur(0px)",
-        "-webkit-filter": "blur(0px)",
-        transition: "all 0.5s",
-        "pointer-events": "none",
+        background: `url(${this.project.imgUrl})`,
       };
     },
     directTo() {
@@ -80,15 +67,32 @@ export default {
 <style scoped>
 .fish-card {
   width: 35vw;
-  aspect-ratio: 1.67;
+  aspect-ratio: 1.5;
   position: relative;
-  border-radius: 24px;
   overflow: hidden;
-  box-shadow: var(--drop-shadow-dark) 0px 7px 29px 0px;
-  transition: box-shadow 0.5s ease-in-out;
+  box-shadow: var(--drop-shadow-dark) 0px 7px 29px 5px;
+  transition: all 0.5s ease-in-out;
   background-color: var(--color-black);
+  border-radius: 50px;
+  border: 2px solid var(--color-accent);
 }
 
+.fish-card-bg {
+  position: absolute;
+  top: calc(-10%);
+  left: calc(-10%);
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  width: 120%;
+  height: 120%;
+  overflow: hidden;
+  opacity: 0.7;
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
+  transition: all 0.5s;
+  pointer-events: none;
+}
 .fish-card div.glow {
   display: block;
   position: absolute;
@@ -135,9 +139,6 @@ span.details {
 
 .fish-card div.fish-card-expand {
   position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   right: 12px;
   bottom: 12px;
   width: 50px;
@@ -153,16 +154,10 @@ span.details {
   justify-content: center;
   align-items: center;
 }
-
-.fish-card-expand > .circle {
-  z-index: 1;
-  transform: scale(1);
-  transition: transform 0.3s ease-in-out;
-}
 .fish-card-expand > .plus {
-  z-index: 2;
-  opacity: 0;
-  transform: rotate(0deg);
+  z-index: 1;
+  color: var(--color-white);
+  transform: scale(1) rotate(0deg);
   transition: all 0.3s ease-in-out;
 }
 
@@ -174,7 +169,14 @@ span.details {
 
   .fish-card:hover {
     cursor: pointer;
+    border-width: 0px;
     box-shadow: var(--drop-shadow-dark) 0px 0px 0px 0px;
+  }
+
+  .fish-card:hover div.fish-card-bg {
+    filter: blur(0px) !important;
+    -webkit-filter: blur(0px) !important;
+    opacity: 1 !important;
   }
 
   .fish-card:hover div.fish-card-bg {
@@ -190,14 +192,8 @@ span.details {
   .fish-card-expand:hover {
     cursor: pointer;
   }
-
-  .fish-card-expand:hover > .circle {
-    transform: scale(1.5);
-  }
-
   .fish-card-expand:hover > .plus {
-    opacity: 1;
-    transform: rotate(180deg);
+    transform: scale(1.5) rotate(180deg);
   }
 }
 
@@ -224,8 +220,8 @@ span.details {
     );
   }
   .fish-card div.fish-card-bg {
-    filter: blur(1px);
-    -webkit-filter: blur(1px);
+    filter: blur(1px) !important;
+    -webkit-filter: blur(1px) !important;
   }
 
   .fish-card-expand > .circle {
