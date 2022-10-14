@@ -11,6 +11,7 @@
     <section id="skills">
       <SkillsOverview />
     </section>
+    <FishDivider label="Projects" />
     <section id="projects">
       <div>
         <FishCard
@@ -21,6 +22,7 @@
         />
       </div>
     </section>
+    <FishDivider label="Photography" />
     <section id="photography">
       <div>Photo</div>
     </section>
@@ -33,6 +35,7 @@ import ParallaxView from "./components/ParallaxView.vue";
 import SkillsOverview from "./components/SkillsOverview.vue";
 import FishCard from "./components/generic/FishCard.vue";
 import { getProjects } from "./services/ProjectService";
+import FishDivider from "./components/generic/FishDivider.vue";
 
 export default {
   components: {
@@ -40,6 +43,7 @@ export default {
     ParallaxView,
     SkillsOverview,
     FishCard,
+    FishDivider,
   },
   data() {
     return {
@@ -83,6 +87,7 @@ export default {
 section {
   min-height: 100vh;
   margin-bottom: var(--section-gap);
+  margin-top: var(--section-gap);
 }
 
 #login {

@@ -7,6 +7,7 @@
   >
     <div class="parallax-background">
       <div>
+        <FishStar v-for="n in 50" :key="n" />
         <h1>Hi! I'm Li Yuxuan. Nice to meet you! 🙌🏻</h1>
       </div>
     </div>
@@ -31,11 +32,13 @@
 <script>
 import FishAvatar from "./generic/FishAvatar.vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import FishStar from "./generic/FishStar.vue";
 
 export default {
   components: {
     FishAvatar,
     FontAwesomeIcon,
+    FishStar,
   },
   data() {
     return {
