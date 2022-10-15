@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import { randomIntFromInterval } from "../../utils";
+import { randomFloatFromInterval, randomIntFromInterval } from "../../utils";
 
 export default {
   props: ["size", "duration"],
@@ -16,14 +16,14 @@ export default {
   created() {
     let screenWidth = window.screen.availWidth;
     let screenHeight = window.screen.availHeight;
-    let duration = randomIntFromInterval(20, 50);
-    let delay = randomIntFromInterval(0, 5);
-    let leftOffset = randomIntFromInterval(500, screenWidth - 500);
+    let duration = randomFloatFromInterval(20, 50);
+    let delay = randomFloatFromInterval(0, 3);
+    let leftOffset = randomIntFromInterval(100, screenWidth - 100);
     this.starStyle = {
       position: "absolute",
       animation: `risingStar ${duration}s linear infinite`,
       "animation-delay": `${delay}s`,
-      top: `${(screenHeight * 2) / 3}px`,
+      top: `${screenHeight / 2 + 100}px`,
       left: `${leftOffset}px`,
     };
 
