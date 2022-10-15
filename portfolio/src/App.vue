@@ -27,7 +27,14 @@
     </section>
     <FishDivider label="Skills" />
     <section id="skills-details">
-      <div>Skills In Details</div>
+      <div>
+        <SkillCard
+          v-for="skillData in skills"
+          :key="skillData.title"
+          :title="skillData.title"
+          :skills="skillData.skills"
+        />
+      </div>
     </section>
   </main>
 </template>
@@ -37,9 +44,11 @@ import AuthButton from "./components/AuthButton.vue";
 import ParallaxView from "./components/ParallaxView.vue";
 import SkillsOverview from "./components/SkillsOverview.vue";
 import FishCard from "./components/generic/FishCard.vue";
+import { getSkills } from "./services/SkillsService";
 import { getProjects } from "./services/ProjectService";
 import FishDivider from "./components/generic/FishDivider.vue";
 import FishScroller from "./components/generic/FishScroller.vue";
+import SkillCard from "./components/SkillCard.vue";
 
 export default {
   components: {
@@ -49,6 +58,7 @@ export default {
     FishCard,
     FishDivider,
     FishScroller,
+    SkillCard,
   },
   data() {
     return {
@@ -56,6 +66,7 @@ export default {
       authBtnHidden: false,
       projects: [],
       scrollerStyle: { opacity: 1 },
+      skills: [],
     };
   },
   methods: {
@@ -77,10 +88,18 @@ export default {
         alert(err.message);
       }
     },
+    async loadSkills() {
+      try {
+        this.skills = await getSkills();
+      } catch (err) {
+        alert(err.message);
+      }
+    },
   },
   created() {
     // TODO: Call these methods via the scroll controller based on scrolling position instead
     this.loadProjects();
+    this.loadSkills();
   },
   mounted() {
     document.addEventListener("scroll", this.handleMainScroll);
@@ -125,6 +144,21 @@ section {
   justify-content: center;
   grid-template-columns: auto auto;
   grid-gap: 4rem;
+}
+
+#skills-details > div {
+  margin: 10px 50px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 50px;
+  /* justify-content: center;
+  grid-template-columns: auto auto;
+  grid-gap: 4rem; */
+}
+
+#skills-details > div > div {
+  flex: 1 auto;
 }
 
 @media (max-width: 1368px) {

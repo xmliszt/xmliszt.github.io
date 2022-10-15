@@ -73,7 +73,7 @@ export default {
   box-shadow: var(--drop-shadow-dark) 0px 7px 29px 5px;
   transition: all 0.5s ease-in-out;
   background-color: var(--color-black);
-  border-radius: 50px;
+  border-radius: 24px;
   border: 2px solid var(--color-accent);
 }
 
