@@ -19,10 +19,6 @@
     <div class="parallax-base">
       <div>
         <div class="header-mountain"></div>
-        <div class="keep-scrolling">
-          <FontAwesomeIcon icon="fa-solid fa-angles-down" />
-          <div>Keep Scrolling</div>
-        </div>
         <div class="background"></div>
       </div>
     </div>
@@ -31,13 +27,11 @@
 
 <script>
 import FishAvatar from "./generic/FishAvatar.vue";
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import FishStar from "./generic/FishStar.vue";
 
 export default {
   components: {
     FishAvatar,
-    FontAwesomeIcon,
     FishStar,
   },
   data() {
@@ -129,28 +123,6 @@ div.parallax-fixed {
   background-size: cover;
   border: none;
 }
-
-.keep-scrolling {
-  text-align: center;
-  position: absolute;
-  bottom: 70px;
-  left: 0px;
-  width: 100%;
-  animation: blink 2s infinite;
-}
-
-@keyframes blink {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
 .background {
   margin: -10px;
   height: 50vh;

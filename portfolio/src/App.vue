@@ -1,5 +1,8 @@
 <template>
   <main>
+    <div class="scroller" :style="scrollerStyle">
+      <FishScroller />
+    </div>
     <ParallaxView ref="parallaxView" @scroll="this.handleScroll" />
     <div id="login">
       <AuthButton
@@ -22,9 +25,9 @@
         />
       </div>
     </section>
-    <FishDivider label="Photography" />
-    <section id="photography">
-      <div>Photo</div>
+    <FishDivider label="Skills" />
+    <section id="skills-details">
+      <div>Skills In Details</div>
     </section>
   </main>
 </template>
@@ -36,6 +39,7 @@ import SkillsOverview from "./components/SkillsOverview.vue";
 import FishCard from "./components/generic/FishCard.vue";
 import { getProjects } from "./services/ProjectService";
 import FishDivider from "./components/generic/FishDivider.vue";
+import FishScroller from "./components/generic/FishScroller.vue";
 
 export default {
   components: {
@@ -44,18 +48,22 @@ export default {
     SkillsOverview,
     FishCard,
     FishDivider,
+    FishScroller,
   },
   data() {
     return {
       authBtnOpacity: 1,
       authBtnHidden: false,
       projects: [],
+      scrollerStyle: { opacity: 1 },
     };
   },
   methods: {
     handleScroll({ target: { scrollTop, clientHeight, scrollHeight } }) {
       this.authBtnOpacity = 1 - scrollTop / (scrollHeight - clientHeight);
       this.authBtnHidden = scrollTop + clientHeight >= scrollHeight;
+      this.scrollerStyle.opacity =
+        1 - scrollTop / (scrollHeight - clientHeight);
     },
     handleMainScroll() {
       if (window.scrollY === 0) {
@@ -84,6 +92,13 @@ export default {
 </script>
 
 <style>
+.scroller {
+  width: 100%;
+  position: fixed;
+  bottom: 70px;
+  z-index: 10;
+}
+
 section {
   min-height: 100vh;
   margin-bottom: var(--section-gap);
