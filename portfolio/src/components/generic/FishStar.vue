@@ -14,16 +14,16 @@ export default {
     };
   },
   created() {
-    let screenWidth = window.screen.availWidth;
+    let screenWidth = window.screen.width;
     let screenHeight = window.screen.availHeight;
     let duration = randomFloatFromInterval(20, 50);
     let delay = randomFloatFromInterval(0, 3);
-    let leftOffset = randomIntFromInterval(100, screenWidth - 100);
+    let leftOffset = randomIntFromInterval(0, screenWidth);
     this.starStyle = {
       position: "absolute",
       animation: `risingStar ${duration}s linear infinite`,
       "animation-delay": `${delay}s`,
-      top: `${screenHeight / 2 + 100}px`,
+      top: `${screenHeight * 0.9}px`,
       left: `${leftOffset}px`,
     };
 
@@ -69,10 +69,9 @@ export default {
 <style>
 @keyframes risingStar {
   0% {
-    transform: translateY(0px);
   }
   100% {
-    transform: translateY(calc(50px - 100vh));
+    top: -100px;
   }
 }
 </style>

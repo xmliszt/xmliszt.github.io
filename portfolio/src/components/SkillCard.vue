@@ -53,9 +53,7 @@ export default {
 .card-body span::before {
   content: "//";
 }
-.skill-card .card-footer {
-}
-◦ @media (max-width: 1368px) {
+@media (max-width: 1368px) {
   .skill-card {
     width: 80vw;
   }

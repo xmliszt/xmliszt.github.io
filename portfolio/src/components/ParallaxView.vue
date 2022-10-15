@@ -118,7 +118,8 @@ div.parallax-fixed {
 }
 
 .header-mountain {
-  height: calc(100vw * 0.4757);
+  height: calc(100vh * 0.5);
+  aspect-ratio: 2.1;
   background: url("../assets/images/bg-mount.png") no-repeat top center;
   background-size: cover;
   border: none;
@@ -129,20 +130,12 @@ div.parallax-fixed {
   background-color: #1e3136;
   border: none;
 }
-
+/* 
 @media (max-width: 1024px) {
-  .parallax {
-    height: 100vh;
-  }
-
-  .background {
-    height: 70vh;
-  }
-
   .header-mountain {
     height: calc(100vh * 0.7);
   }
-}
+} */
 
 .parallax-fixed > div {
   display: flex;

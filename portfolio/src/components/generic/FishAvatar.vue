@@ -1,5 +1,5 @@
 <template>
-  <div class="avatar drop-shadow-light morph-hover-effect">
+  <div class="avatar drop-shadow-light morph-hover-effect" @click="openGithub">
     <img :src="imgUrl" :alt="imgAlt" />
   </div>
 </template>
@@ -11,7 +11,13 @@ export default {
     return {
       imgUrl: avatarImg,
       imgAlt: "No Image",
+      githubUrl: "https://github.com/xmliszt",
     };
+  },
+  methods: {
+    openGithub() {
+      window.open(this.githubUrl, "_blank");
+    },
   },
 };
 </script>
@@ -26,6 +32,9 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition-property: width, height, border-width, border-radius, top, right;
+  transition-duration: 0.35s;
+  transition-timing-function: ease-in-out;
 }
 
 @media (max-width: 1368px) {
