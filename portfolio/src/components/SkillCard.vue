@@ -18,7 +18,6 @@ export default {
 
 <style scoped>
 .skill-card {
-  width: 25vw;
   padding: 20px;
   padding-top: 0px;
   border-radius: 25px;

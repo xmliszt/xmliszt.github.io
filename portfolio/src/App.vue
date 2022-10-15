@@ -194,7 +194,7 @@ section {
 }
 
 #skills > div {
-  margin: 10px 50px;
+  margin: 20px 80px;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
@@ -213,9 +213,6 @@ section {
 </style>
 
 <style>
-main {
-  overflow-x: hidden;
-}
 .menu {
   position: fixed;
   top: 10px;
@@ -240,6 +237,7 @@ main {
   transition-duration: 0.35s;
   transition-timing-function: ease-in-out;
   transform-origin: 0% 0%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 20px 0px;
 }
 
 .menu-body.show {
@@ -267,7 +265,17 @@ main {
   height: 50px;
 }
 
+@media (max-width: 1024px) {
+  .menu-body button {
+    color: #fff;
+  }
+}
+
 @media (hover: hover) {
+  .menu button:hover {
+    transform: rotate(90deg);
+    transition-timing-function: ease-in-out;
+  }
   .menu-body button:hover {
     transform: scale(1.1);
     color: #fff;
@@ -288,10 +296,11 @@ main {
 .parallax-title {
   position: fixed;
   z-index: -1;
-  width: 40vw;
+  width: 60vw;
   top: 30vh;
   left: 10vw;
   animation: floating 5s ease-in-out infinite;
+  animation-delay: 1s;
 }
 .parallax-avatar {
   position: fixed;

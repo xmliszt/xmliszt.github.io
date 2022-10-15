@@ -44,6 +44,12 @@ export default {
   }
 }
 
+@media (hover: hover) {
+  .avatar:hover {
+    cursor: pointer;
+  }
+}
+
 .avatar img {
   width: 120%;
   height: 120%;
