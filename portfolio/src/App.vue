@@ -14,7 +14,9 @@
       <button @click="navigateTo('projects')">Projects</button>
       <button @click="navigateTo('skills')">Skills</button>
     </div>
-    <div class="parallax-bottom" :style="parallaxBottomStyle"><div></div></div>
+    <div class="parallax-bottom" :style="parallaxBottomStyle">
+      <span role="img" aria-label="Background Sky"></span>
+    </div>
     <div class="parallax-stars">
       <FishStar v-for="n in 50" :key="n" />
     </div>
@@ -23,7 +25,9 @@
       <h1>{{ landingTitle }}</h1>
     </div>
     <FishSpacer height="50vh" />
-    <div class="parallax-mountain"></div>
+    <div class="parallax-mountain">
+      <span role="img" aria-label="Mountain Parallax"></span>
+    </div>
     <div class="content-wrapper">
       <FishSpacer height="300px" />
       <section id="tagline">
@@ -95,6 +99,7 @@ export default {
         right: "0px",
         bottom: "0px",
         "z-index": -2,
+        display: "flex",
       },
       skills: [],
     };
@@ -322,16 +327,21 @@ section {
 .content-wrapper {
   background-color: var(--color-black);
 }
+
 .parallax-mountain {
+  display: flex;
+}
+
+.parallax-mountain > span {
   background: url("/src/assets/images/bg-mount.png") no-repeat top center;
   background-size: cover;
   border: none;
-  width: 100vw;
+  width: 100%;
   aspect-ratio: 2.1;
 }
-.parallax-bottom > div {
-  height: 100vh;
-  width: 100vw;
+.parallax-bottom > span {
+  height: 100%;
+  width: 100%;
   background: url("/src/assets/images/bg-header.jpg") top center;
   background-size: cover;
   pointer-events: none;
