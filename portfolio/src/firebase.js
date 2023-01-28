@@ -1,6 +1,6 @@
-import { initializeApp } from "firebase/app";
+import { initializeApp, getApps, getApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, initializeFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
@@ -15,7 +15,11 @@ const firebaseConfig = {
 
 export const resourceId = "tAD6hG0KxDMM1OiiRmfhRgXyY1d2";
 
-const app = initializeApp(firebaseConfig);
+if (!getApps().length) {
+  let app = initializeApp(firebaseConfig);
+  initializeFirestore(app, { experimentalAutoDetectLongPolling: true });
+}
+const app = getApp();
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const storage = getStorage(app);

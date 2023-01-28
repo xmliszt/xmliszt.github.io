@@ -9,6 +9,11 @@ export async function getProjects() {
         snapshot.docs.map((doc) => {
           result.push(doc.data());
         });
+        result.sort((a) => {
+          if (a.hot || false) {
+            return -1;
+          }
+        });
         res(result);
       })
       .catch((err) => {

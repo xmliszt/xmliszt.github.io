@@ -1,6 +1,6 @@
 <template>
   <div class="avatar drop-shadow-light morph-hover-effect" @click="openGithub">
-    <img :src="imgUrl" :alt="imgAlt" />
+    <img aria-label="profile image" :src="imgUrl" :alt="imgAlt" />
   </div>
 </template>
 

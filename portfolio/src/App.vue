@@ -4,15 +4,36 @@
       <FishScroller />
     </div>
     <div class="menu" id="menu">
-      <button class="icon-button hover-effect" @click="toggleMenu">
+      <button
+        aria-label="page quick navigation"
+        class="icon-button hover-effect"
+        @click="toggleMenu"
+      >
         <FontAwesomeIcon icon="fa-solid fa-bars" />
       </button>
     </div>
     <div class="menu-body hide" id="menu-body">
-      <button @click="navigateTo('')">Top</button>
-      <button @click="navigateTo('tagline')">Summary</button>
-      <button @click="navigateTo('projects')">Projects</button>
-      <button @click="navigateTo('skills')">Skills</button>
+      <button @click="navigateTo('')" aria-label="navigate to top of the page">
+        Top
+      </button>
+      <button
+        @click="navigateTo('tagline')"
+        aria-label="navigate to tagline section"
+      >
+        Summary
+      </button>
+      <button
+        @click="navigateTo('projects')"
+        aria-label="navigate to projects section"
+      >
+        Projects
+      </button>
+      <button
+        @click="navigateTo('skills')"
+        aria-label="navigate to skills section"
+      >
+        Skills
+      </button>
     </div>
     <div class="parallax-bottom" :style="parallaxBottomStyle">
       <span role="img" aria-label="Background Sky"></span>
@@ -22,7 +43,7 @@
     </div>
     <FishAvatar class="parallax-avatar" ref="avatarView" />
     <div class="parallax-title">
-      <h1>{{ landingTitle }}</h1>
+      <h1 aria-label="My greeting to you">{{ landingTitle }}</h1>
     </div>
     <FishSpacer height="50vh" />
     <div class="parallax-mountain">
@@ -30,22 +51,20 @@
     </div>
     <div class="content-wrapper">
       <FishSpacer height="300px" />
-      <section id="tagline">
+      <section id="tagline" aria-label="tagline section">
         <SkillsOverview />
       </section>
       <FishDivider label="Projects" />
-      <section id="projects">
+      <section id="projects" aria-label="projects section">
         <div>
-          <FishCard
-            class="fish-card"
-            v-for="(project, idx) in projects"
-            :key="idx"
-            :project="project"
-          />
+          <div :key="idx" v-for="(project, idx) in projects">
+            <FishHot :label="hot" v-show="project.hot" />
+            <FishCard class="fish-card" :project="project" />
+          </div>
         </div>
       </section>
       <FishDivider label="Skills" />
-      <section id="skills">
+      <section id="skills" aria-label="skills showcase section">
         <div>
           <SkillCard
             v-for="skillData in skills"
@@ -55,6 +74,7 @@
           />
         </div>
       </section>
+      <BottomCampFire />
     </div>
   </main>
 </template>
@@ -71,6 +91,8 @@ import SkillCard from "./components/SkillCard.vue";
 import FishStar from "./components/generic/FishStar.vue";
 import FishAvatar from "./components/generic/FishAvatar.vue";
 import FishSpacer from "./components/generic/FishSpacer.vue";
+import BottomCampFire from "./components/BottomCampFire.vue";
+import FishHot from "./components/generic/FishHot.vue";
 
 export default {
   components: {
@@ -83,6 +105,8 @@ export default {
     SkillCard,
     FishSpacer,
     FontAwesomeIcon,
+    BottomCampFire,
+    FishHot,
   },
   data() {
     return {
@@ -120,7 +144,6 @@ export default {
     },
     handleMainScroll() {
       let yOffset = window.scrollY;
-      console.log(`Window Scrolling: ${yOffset}`);
       this.scrollerStyle.opacity = Math.max(0, 1 - yOffset / 200);
       this.parallaxBottomStyle.top = `${-yOffset * 0.2}px`;
       if (yOffset > 300) {
@@ -189,6 +212,7 @@ section {
 
 #tagline {
   position: relative;
+  height: 50vh;
 }
 
 #projects > div {
@@ -196,6 +220,12 @@ section {
   justify-content: center;
   grid-template-columns: auto auto;
   grid-gap: 4rem;
+}
+
+#projects > div > div {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 #skills > div {
@@ -210,9 +240,14 @@ section {
   flex: 1 auto;
 }
 
-@media (max-width: 1368px) {
+@media (max-width: 1024px) {
   #projects > div {
     grid-template-columns: auto;
+  }
+
+  #skills > div {
+    margin: 0px 16px;
+    gap: 20px;
   }
 }
 </style>

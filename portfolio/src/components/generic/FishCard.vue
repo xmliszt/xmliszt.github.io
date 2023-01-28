@@ -3,10 +3,16 @@
     <div class="fish-card-bg" :style="setBackground()"></div>
     <div class="glow"></div>
     <div class="fish-card-overlay">
-      <span class="title">{{ project.title }}</span>
-      <span class="details">{{ project.details }}</span>
+      <span class="title" aria-label="project title">{{ project.title }}</span>
+      <span class="details" aria-label="project details">{{
+        project.details
+      }}</span>
     </div>
-    <div class="fish-card-expand hover-effect" @click="directTo">
+    <div
+      class="fish-card-expand hover-effect"
+      @click="directTo"
+      aria-label="{{`Visit project details for: ${project.title}`}}"
+    >
       <div class="plus">
         <FontAwesomeIcon icon="fa-solid fa-expand" />
       </div>
@@ -16,6 +22,7 @@
 
 <script>
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+
 export default {
   components: {
     FontAwesomeIcon,
@@ -66,6 +73,7 @@ export default {
 
 <style scoped>
 .fish-card {
+  position: relative;
   width: 35vw;
   aspect-ratio: 1.5;
   position: relative;
@@ -197,35 +205,41 @@ span.details {
   }
 }
 
-@media (max-width: 1368px) {
+@media (max-width: 1024px) {
   span.title {
-    font-size: var(--font-regular);
+    font-size: 1rem;
     margin-bottom: 12px;
   }
 
   span.details {
-    font-size: var(--font-small);
+    font-size: 0.8rem;
   }
   .fish-card {
     width: 80vw;
+    aspect-ratio: 0.6;
+    max-height: 80vh;
   }
 
   .fish-card div.fish-card-overlay {
     bottom: 0px;
+    height: 100%;
     background: linear-gradient(
       0deg,
       rgba(2, 0, 36, 1) 0%,
-      rgba(0, 0, 0, 0.5) 78%,
+      rgba(0, 0, 0, 0.5) 80%,
       rgba(0, 0, 0, 0) 100%
     );
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
   .fish-card div.fish-card-bg {
-    filter: blur(1px) !important;
-    -webkit-filter: blur(1px) !important;
+    filter: blur(0px) !important;
+    -webkit-filter: blur(0px) !important;
   }
 
   .fish-card-expand > .circle {
-    transform: scale(1.5);
+    transform: scale(1.2);
   }
   .fish-card-expand > .plus {
     opacity: 1;

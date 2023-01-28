@@ -3,11 +3,13 @@
     <FishTypeWriter
       class="typewriter"
       :skills="skills"
+      aria-label="skill overview display as animated typewritter text"
       @onSentenceChanged="onTypeWriterSentenceChanged"
       @onStartTypingNextSentence="this.isWaiting = false"
       @onWaitingForNextSentence="this.isWaiting = true"
     />
     <FishTag
+      aria-label="skill overview category"
       class="fish-tag drop-shadow-dark"
       :class="[isWaiting ? tagHideClass : tagShowClass]"
       :label="displayedTag"

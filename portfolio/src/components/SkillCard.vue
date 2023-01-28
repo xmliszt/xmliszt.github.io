@@ -1,10 +1,16 @@
 <template>
   <div class="skill-card drop-shadow-dark hover-effect">
-    <div class="card-header">
+    <div class="card-header" aria-label="skill category">
       <h1>{{ title.toUpperCase() }}</h1>
     </div>
-    <div class="card-body">
-      <span v-for="skill in skills" :key="skill"> {{ skill }}</span>
+    <div class="card-body" aria-label="skills in details">
+      <span
+        v-for="skill in skills"
+        :key="skill"
+        aria-label="individual skill label under the category"
+      >
+        {{ skill }}</span
+      >
     </div>
     <div class="card-foot"></div>
   </div>
@@ -43,7 +49,6 @@ export default {
 }
 
 .card-body span {
-  height: 24px;
   padding: 5px 10px;
   border-radius: 24px;
   background: linear-gradient(to right, #f918b1f7, #9718f9f7 50%, #32d6ff 100%);
@@ -52,9 +57,13 @@ export default {
 .card-body span::before {
   content: "//";
 }
-@media (max-width: 1368px) {
+@media (max-width: 567px) {
   .skill-card {
-    width: 80vw;
+    width: 90vw;
+  }
+
+  .card-header h1 {
+    font-size: 1rem;
   }
 }
 </style>

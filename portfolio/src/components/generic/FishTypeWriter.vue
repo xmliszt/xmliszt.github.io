@@ -1,6 +1,6 @@
 <template>
   <div class="typewriter drop-shadow-dark">
-    <p>
+    <p aria-label="skills shown as typewritter text">
       I <span class="typed-text">{{ this.typedOutText }}</span>
       <span class="cursor" :class="[isTyping ? isTypingClass : '']"
         >&nbsp;</span
@@ -102,6 +102,12 @@ export default {
   padding: 10px 20px;
   margin: 20px;
   border-radius: 20px;
+}
+
+@media (max-width: 576px) {
+  .typewriter {
+    font-size: 1.5rem;
+  }
 }
 
 .typewriter span.typed-text {

@@ -1,9 +1,19 @@
 <template>
   <div>
-    <button v-if="!isLoggedIn" class="icon-button hover-effect" @click="login">
+    <button
+      aria-label="login button"
+      v-if="!isLoggedIn"
+      class="icon-button hover-effect"
+      @click="login"
+    >
       <FontAwesomeIcon icon="fa-solid fa-arrow-right-to-bracket" />
     </button>
-    <button v-else class="icon-button hover-effect" @click="logout">
+    <button
+      aria-label="logout button"
+      v-else
+      class="icon-button hover-effect"
+      @click="logout"
+    >
       <FontAwesomeIcon icon="fa-solid fa-arrow-up-right-from-square" />
     </button>
   </div>

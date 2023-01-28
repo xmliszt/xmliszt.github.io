@@ -1,5 +1,5 @@
 <template>
-  <div class="fish-tag">{{ label.toUpperCase() }}</div>
+  <div class="fish-tag" aria-label="tag">{{ label.toUpperCase() }}</div>
 </template>
 
 <script>

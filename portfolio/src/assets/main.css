@@ -38,7 +38,7 @@ h1 {
 
 @media (max-width: 1368px) {
   h1 {
-    font-size: var(--font-large);
+    font-size: 1.2rem;
   }
 }
 
@@ -64,4 +64,14 @@ button {
   box-shadow: 0 0 20px #eee;
   display: block;
   border: 2px solid var(--color-border);
+}
+
+footer,
+footer > p {
+  text-align: center;
+  background-color: #1e3136;
+  color: var(--primary-dark);
+  padding: 16px;
+  margin: 0px;
+  font-weight: 200;
 }
