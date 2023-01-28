@@ -1,4 +1,6 @@
 #!/bin/bash
+
+npm run build
 # abort on errors
 set -e
 

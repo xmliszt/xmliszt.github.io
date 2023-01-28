@@ -1,4 +1,5 @@
 #!/bin/bash
+npm run build
 
 now=$(date +"%Y-%m-%d-%T")
 if [[ -d "dist" ]]; then
