@@ -35,7 +35,9 @@ export default {
   },
   methods: {
     buildSentence(skill) {
-      return `${skill.verb} ${skill.adj} ${skill.noun} using ${skill.tools
+      return `${skill.verb} ${skill.adj} ${skill.noun} ${
+        skill.connection
+      } ${skill.tools
         .slice(1)
         .reduce((prev, crrt) => prev + ", " + crrt, skill.tools[0])}.`;
     },

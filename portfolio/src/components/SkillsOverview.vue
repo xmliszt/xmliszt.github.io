@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     onTypeWriterSentenceChanged(skill) {
-      this.displayedTag = skill.category;
+      this.displayedTag = "#" + skill.category;
     },
     async _getTaglines() {
       try {
@@ -75,15 +75,6 @@ export default {
 
 .fish-tag.hide {
   opacity: 0;
-}
-
-@media (hover: hover) {
-  .fish-tag:hover {
-    border-radius: 0px;
-    background-color: var(--color-accent);
-    border-color: white;
-    color: white;
-  }
 }
 
 @keyframes blink {
