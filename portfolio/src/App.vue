@@ -268,6 +268,11 @@ section {
     margin: 0px 16px;
     gap: 20px;
   }
+
+  #skills > div.skills-wrapper {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 </style>
 
@@ -380,6 +385,8 @@ section {
 }
 .content-wrapper {
   background-color: var(--color-black);
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .parallax-mountain {

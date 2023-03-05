@@ -110,7 +110,7 @@ export default {
   transition-property: bottom;
   transition-duration: 300ms;
   padding: 20px 50px 25px 25px;
-  z-index: 20;
+  z-index: 0;
 }
 
 span {
