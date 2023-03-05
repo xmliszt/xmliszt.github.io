@@ -1,5 +1,9 @@
 <template>
   <div class="skills-overview">
+    <FishLoader
+      :active="isLoading"
+      label="Fetching skills summary from database..."
+    />
     <FishTypeWriter
       class="typewriter"
       :skills="skills"
@@ -21,9 +25,10 @@
 import { getTaglines } from "../services/TaglineService";
 import FishTag from "./generic/FishTag.vue";
 import FishTypeWriter from "./generic/FishTypeWriter.vue";
+import FishLoader from "./generic/FishLoader.vue";
 
 export default {
-  components: { FishTag, FishTypeWriter },
+  components: { FishTag, FishTypeWriter, FishLoader },
   created() {
     this._getTaglines();
   },
@@ -34,6 +39,7 @@ export default {
       tagShowClass: "show",
       tagHideClass: "hide",
       skills: [],
+      isLoading: false,
     };
   },
   methods: {
@@ -42,9 +48,12 @@ export default {
     },
     async _getTaglines() {
       try {
+        this.isLoading = true;
         this.skills = await getTaglines();
       } catch (err) {
         alert(err.message);
+      } finally {
+        this.isLoading = false;
       }
     },
   },

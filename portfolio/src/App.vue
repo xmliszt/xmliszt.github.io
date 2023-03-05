@@ -59,6 +59,10 @@
       </section>
       <FishDivider label="Projects" />
       <section id="projects" aria-label="projects section">
+        <FishLoader
+          :active="isProjectLoading"
+          label="Fetching projects information from database..."
+        />
         <div>
           <div :key="idx" v-for="(project, idx) in projects">
             <FishHot :label="hot" v-show="project.hot" />
@@ -68,7 +72,11 @@
       </section>
       <FishDivider label="Skills" />
       <section id="skills" aria-label="skills showcase section">
-        <div>
+        <FishLoader
+          :active="isSkillLoading"
+          label="Fetching skills information from database..."
+        />
+        <div class="skills-wrapper">
           <SkillCard
             v-for="skillData in skills"
             :key="skillData.title"
@@ -96,6 +104,7 @@ import FishAvatar from "./components/generic/FishAvatar.vue";
 import FishSpacer from "./components/generic/FishSpacer.vue";
 import BottomCampFire from "./components/BottomCampFire.vue";
 import FishHot from "./components/generic/FishHot.vue";
+import FishLoader from "./components/generic/FishLoader.vue";
 
 export default {
   components: {
@@ -110,6 +119,7 @@ export default {
     FontAwesomeIcon,
     BottomCampFire,
     FishHot,
+    FishLoader,
   },
   data() {
     return {
@@ -129,6 +139,8 @@ export default {
         display: "flex",
       },
       skills: [],
+      isProjectLoading: false,
+      isSkillLoading: false,
     };
   },
   methods: {
@@ -167,16 +179,22 @@ export default {
     },
     async loadProjects() {
       try {
+        this.isProjectLoading = true;
         this.projects = await getProjects();
       } catch (err) {
         alert(err.message);
+      } finally {
+        this.isProjectLoading = false;
       }
     },
     async loadSkills() {
       try {
+        this.isSkillLoading = true;
         this.skills = await getSkills();
       } catch (err) {
         alert(err.message);
+      } finally {
+        this.isSkillLoading = false;
       }
     },
   },
@@ -206,8 +224,8 @@ export default {
 
 section {
   min-height: 100vh;
-  padding-bottom: var(--section-gap);
   padding-top: var(--section-gap);
+  padding-bottom: var(--section-gap);
 }
 
 #tagline {
@@ -228,8 +246,9 @@ section {
   height: 100%;
 }
 
-#skills > div {
-  margin: 20px 80px;
+#skills > div.skills-wrapper {
+  padding-left: 80px;
+  padding-right: 80px;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
@@ -264,7 +283,7 @@ section {
   border-radius: 15px;
   top: 60px;
   left: 30px;
-  z-index: 2;
+  z-index: 99;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
