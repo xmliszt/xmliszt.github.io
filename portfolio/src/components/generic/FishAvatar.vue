@@ -35,6 +35,7 @@ export default {
   transition-property: width, height, border-width, border-radius, top, right;
   transition-duration: 0.35s;
   transition-timing-function: ease-in-out;
+  z-index: 99;
 }
 
 @media (max-width: 1368px) {

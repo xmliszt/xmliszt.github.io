@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main id="top">
     <div class="scroller" :style="scrollerStyle">
       <FishScroller />
     </div>
@@ -7,13 +7,16 @@
       <button
         aria-label="page quick navigation"
         class="icon-button hover-effect"
-        @click="toggleMenu"
+        @mouseover="toggleMenu"
       >
         <FontAwesomeIcon icon="fa-solid fa-bars" />
       </button>
     </div>
     <div class="menu-body hide" id="menu-body">
-      <button @click="navigateTo('')" aria-label="navigate to top of the page">
+      <button
+        @click="navigateTo('top')"
+        aria-label="navigate to top of the page"
+      >
         Top
       </button>
       <button
@@ -111,7 +114,7 @@ export default {
   data() {
     return {
       isMenuOpen: false,
-      landingTitle: "Hi! I'm Li Yuxuan. Nice to meet you! 🙌🏻",
+      landingTitle: "Hi 🙌🏻 I'm Li Yuxuan. I am a Software Engineer. 💻",
       authBtnOpacity: 1,
       authBtnHidden: false,
       projects: [],
@@ -131,10 +134,7 @@ export default {
   methods: {
     toggleMenu() {
       let menuBody = document.getElementById("menu-body");
-      if (this.isMenuOpen) {
-        menuBody.classList.remove("show");
-        this.isMenuOpen = false;
-      } else {
+      if (!menuBody.classList.contains("show")) {
         menuBody.classList.add("show");
         this.isMenuOpen = true;
       }
@@ -257,7 +257,7 @@ section {
   position: fixed;
   top: 10px;
   left: 15px;
-  z-index: 2;
+  z-index: 99;
 }
 .menu-body {
   position: fixed;

@@ -1,6 +1,10 @@
 <template>
-  <div ref="fishCard" class="fish-card" @click="directTo">
-    <div class="fish-card-bg" :style="setBackground()"></div>
+  <div
+    ref="fishCard"
+    class="fish-card"
+    :style="setBackground()"
+    @click="directTo"
+  >
     <div class="glow"></div>
     <div class="fish-card-overlay">
       <span class="title" aria-label="project title">{{ project.title }}</span>
@@ -8,28 +12,14 @@
         project.details
       }}</span>
     </div>
-    <div
-      class="fish-card-expand hover-effect"
-      @click="directTo"
-      aria-label="{{`Visit project details for: ${project.title}`}}"
-    >
-      <div class="plus">
-        <FontAwesomeIcon icon="fa-solid fa-expand" />
-      </div>
-    </div>
   </div>
 </template>
 
 <script>
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-
 export default {
-  components: {
-    FontAwesomeIcon,
-  },
   props: ["project"],
   data() {
-    return { interactionRemovalDelay: 2000 };
+    return { interactionRemovalDelay: 2000, backgroundImgUrl: "" };
   },
   methods: {
     setBackground() {
@@ -80,26 +70,15 @@ export default {
   overflow: hidden;
   box-shadow: var(--drop-shadow-dark) 0px 7px 29px 5px;
   transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
   background-color: var(--color-black);
   border-radius: 24px;
+  -webkit-border-radius: 24px;
+  -moz-border-radius: 24px;
   border: 2px solid var(--color-accent);
-}
-
-.fish-card-bg {
-  position: absolute;
-  top: calc(-10%);
-  left: calc(-10%);
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
+  background-size: 45vw !important;
   background-position: center center !important;
-  width: 120%;
-  height: 120%;
-  overflow: hidden;
-  opacity: 0.7;
-  filter: blur(2px);
-  -webkit-filter: blur(2px);
-  transition: all 0.5s;
-  pointer-events: none;
+  background-repeat: no-repeat !important;
 }
 .fish-card div.glow {
   display: block;
@@ -126,11 +105,12 @@ export default {
     0deg,
     rgba(2, 0, 36, 1) 0%,
     rgba(0, 0, 0, 0.7763480392156863) 37%,
-    rgba(0, 0, 0, 0) 100%
+    rgba(0, 0, 0, 0.485) 100%
   );
   transition-property: bottom;
   transition-duration: 300ms;
   padding: 20px 50px 25px 25px;
+  z-index: 20;
 }
 
 span {
@@ -145,30 +125,6 @@ span.details {
   font-size: var(--font-regular);
 }
 
-.fish-card div.fish-card-expand {
-  position: absolute;
-  right: 12px;
-  bottom: 12px;
-  width: 50px;
-  aspect-ratio: 1;
-}
-
-.fish-card-expand div {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  aspect-ratio: 1;
-  position: absolute;
-  justify-content: center;
-  align-items: center;
-}
-.fish-card-expand > .plus {
-  z-index: 1;
-  color: var(--color-white);
-  transform: scale(1) rotate(0deg);
-  transition: all 0.3s ease-in-out;
-}
-
 @media (hover: hover) {
   .fish-card:hover div.glow {
     transform: translate(1100%);
@@ -177,8 +133,11 @@ span.details {
 
   .fish-card:hover {
     cursor: pointer;
-    border-width: 0px;
     box-shadow: var(--drop-shadow-dark) 0px 0px 0px 0px;
+    background-size: 50vw !important;
+    filter: blur(0px);
+    -webkit-filter: blur(0px);
+    opacity: 100%;
   }
 
   .fish-card:hover div.fish-card-bg {
@@ -196,12 +155,13 @@ span.details {
   .fish-card:hover div.fish-card-overlay {
     bottom: 0px;
   }
+}
 
-  .fish-card-expand:hover {
-    cursor: pointer;
-  }
-  .fish-card-expand:hover > .plus {
-    transform: scale(1.5) rotate(180deg);
+@media (min-width: 1024px) {
+  .fish-card {
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+    opacity: 70%;
   }
 }
 
@@ -217,7 +177,8 @@ span.details {
   .fish-card {
     width: 80vw;
     aspect-ratio: 0.6;
-    max-height: 80vh;
+    max-height: 40vh;
+    background-size: 120vh !important;
   }
 
   .fish-card div.fish-card-overlay {
@@ -236,13 +197,6 @@ span.details {
   .fish-card div.fish-card-bg {
     filter: blur(0px) !important;
     -webkit-filter: blur(0px) !important;
-  }
-
-  .fish-card-expand > .circle {
-    transform: scale(1.2);
-  }
-  .fish-card-expand > .plus {
-    opacity: 1;
   }
 }
 </style>

@@ -14,7 +14,7 @@ export default {
   background-color: rgb(246, 90, 62);
   top: -10px;
   right: -10px;
-  z-index: 999;
+  z-index: 20;
   font-size: 1.2rem;
   padding: 0px 5px;
   border-radius: 8px;
