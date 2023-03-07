@@ -139,7 +139,7 @@ span.details {
   .fish-card {
     width: 80vw;
     aspect-ratio: 0.6;
-    max-height: 40vh;
+    max-height: 60vh;
     background-size: 120vh !important;
   }
 
@@ -156,9 +156,10 @@ span.details {
     flex-direction: column;
     justify-content: flex-end;
   }
-  .fish-card div.fish-card-bg {
+  .fish-card {
     filter: blur(0px) !important;
     -webkit-filter: blur(0px) !important;
+    opacity: 100% !important;
   }
 }
 </style>
