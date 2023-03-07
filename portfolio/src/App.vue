@@ -349,6 +349,7 @@ section {
 .parallax-stars {
   pointer-events: none;
   position: absolute;
+  overflow: hidden;
   top: 0;
   left: 0;
   right: 0;
