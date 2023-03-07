@@ -30,36 +30,9 @@ export default {
     directTo() {
       window.open(this.project.link, "__blank");
     },
-    interact() {
-      this.$refs.fishCard.classList.add("interaction");
-      setTimeout(() => {
-        this.$refs.fishCard.classList.remove("interaction");
-      }, this.interactionRemovalDelay);
-    },
   },
 };
 </script>
-
-<style>
-.interaction {
-  animation: interact 1s ease-in-out both;
-}
-
-@keyframes interact {
-  0% {
-    transform: rotate(0deg) scale(1);
-  }
-  40% {
-    transform: rotate(2deg) scale(1.05);
-  }
-  70% {
-    transform: rotate(-2deg) scale(1.05);
-  }
-  100% {
-    transform: rotate(0deg) scale(1);
-  }
-}
-</style>
 
 <style scoped>
 .fish-card {
@@ -69,16 +42,23 @@ export default {
   position: relative;
   overflow: hidden;
   box-shadow: var(--drop-shadow-dark) 0px 7px 29px 5px;
-  transition: all 0.5s ease-in-out;
-  -webkit-transition: all 0.5s ease-in-out;
+  transition-property: background-size filter opacity;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
   background-color: var(--color-black);
   border-radius: 24px;
-  -webkit-border-radius: 24px;
-  -moz-border-radius: 24px;
   border: 2px solid var(--color-accent);
   background-size: 45vw !important;
   background-position: center center !important;
   background-repeat: no-repeat !important;
+  filter: blur(2px);
+  opacity: 70%;
+  -webkit-filter: blur(2px);
+  -webkit-transition-property: background-size filter opacity;
+  -webkit-transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-in-out;
+  -webkit-border-radius: 24px;
+  -moz-border-radius: 24px;
 }
 .fish-card div.glow {
   display: block;
@@ -89,8 +69,9 @@ export default {
   background-color: rgba(255, 255, 255, 0.3);
   transform: translate(-400%) rotate(20deg);
   filter: blur(30px);
+  transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
   -webkit-filter: blur(30px);
-  transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -webkit-transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 .fish-card div.fish-card-overlay {
@@ -109,6 +90,10 @@ export default {
   );
   transition-property: bottom;
   transition-duration: 300ms;
+  transition-timing-function: ease;
+  -webkit-transition-property: bottom;
+  -webkit-transition-duration: 300ms;
+  -webkit-transition-timing-function: ease;
   padding: 20px 50px 25px 25px;
   z-index: 0;
 }
@@ -128,44 +113,21 @@ span.details {
 @media (hover: hover) {
   .fish-card:hover div.glow {
     transform: translate(1100%);
-    transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
   }
 
   .fish-card:hover {
     cursor: pointer;
-    box-shadow: var(--drop-shadow-dark) 0px 0px 0px 0px;
     background-size: 50vw !important;
     filter: blur(0px);
-    -webkit-filter: blur(0px);
     opacity: 100%;
-  }
-
-  .fish-card:hover div.fish-card-bg {
-    filter: blur(0px) !important;
-    -webkit-filter: blur(0px) !important;
-    opacity: 1 !important;
-  }
-
-  .fish-card:hover div.fish-card-bg {
-    transform: scale(1.1);
-    filter: blur(2px);
-    -webkit-filter: blur(2px);
+    -webkit-filter: blur(0px);
   }
 
   .fish-card:hover div.fish-card-overlay {
     bottom: 0px;
   }
 }
-
-@media (min-width: 1024px) {
-  .fish-card {
-    filter: blur(2px);
-    -webkit-filter: blur(2px);
-    opacity: 70%;
-  }
-}
-
-@media (max-width: 1024px) {
+@media (max-width: 1366px) {
   span.title {
     font-size: 1rem;
     margin-bottom: 12px;
