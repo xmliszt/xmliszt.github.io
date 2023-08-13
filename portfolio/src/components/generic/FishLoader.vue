@@ -21,6 +21,7 @@ export default {
   z-index: 30 !important;
   width: 100% !important;
   height: 100% !important;
+  left: 0;
   display: flex !important;
   gap: 2rem !important;
   flex-direction: column !important;

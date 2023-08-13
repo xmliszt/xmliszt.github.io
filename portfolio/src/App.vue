@@ -26,6 +26,12 @@
         Summary
       </button>
       <button
+        @click="navigateTo('packages')"
+        aria-label="navigate to packages section"
+      >
+        Packages
+      </button>
+      <button
         @click="navigateTo('projects')"
         aria-label="navigate to projects section"
       >
@@ -57,21 +63,38 @@
       <section id="tagline" aria-label="tagline section">
         <SkillsOverview />
       </section>
-      <FishDivider label="Projects" />
-      <section id="projects" aria-label="projects section">
+      <FishDivider label="Packages" id="packages" />
+      <section id="section-packages" aria-label="packages section">
+        <FishLoader
+          :active="isPackageLoading"
+          label="Fetching packages information from database..."
+        />
+        <div>
+          <FishCardSimple
+            :key="idx"
+            v-for="(_package, idx) in packages"
+            class="fish-card"
+            :project="_package"
+          />
+        </div>
+      </section>
+      <FishDivider label="Projects" id="projects" />
+      <section id="section-projects" aria-label="projects section">
         <FishLoader
           :active="isProjectLoading"
           label="Fetching projects information from database..."
         />
         <div>
-          <div :key="idx" v-for="(project, idx) in projects">
-            <FishHot :label="hot" v-show="project.hot" />
-            <FishCard class="fish-card" :project="project" />
-          </div>
+          <FishCardSimple
+            :key="idx"
+            v-for="(project, idx) in projects"
+            class="fish-card"
+            :project="project"
+          />
         </div>
       </section>
-      <FishDivider label="Skills" />
-      <section id="skills" aria-label="skills showcase section">
+      <FishDivider label="Skills" id="skills" />
+      <section id="section-skills" aria-label="skills showcase section">
         <FishLoader
           :active="isSkillLoading"
           label="Fetching skills information from database..."
@@ -92,33 +115,32 @@
 
 <script>
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import SkillsOverview from "./components/SkillsOverview.vue";
-import FishCard from "./components/generic/FishCard.vue";
-import { getSkills } from "./services/SkillsService";
-import { getProjects } from "./services/ProjectService";
-import FishDivider from "./components/generic/FishDivider.vue";
-import FishScroller from "./components/generic/FishScroller.vue";
-import SkillCard from "./components/SkillCard.vue";
-import FishStar from "./components/generic/FishStar.vue";
-import FishAvatar from "./components/generic/FishAvatar.vue";
-import FishSpacer from "./components/generic/FishSpacer.vue";
-import BottomCampFire from "./components/BottomCampFire.vue";
-import FishHot from "./components/generic/FishHot.vue";
-import FishLoader from "./components/generic/FishLoader.vue";
+import SkillsOverview from "@/components/SkillsOverview.vue";
+import FishCardSimple from "@/components/generic/FishCardSimple.vue";
+import FishDivider from "@/components/generic/FishDivider.vue";
+import FishScroller from "@/components/generic/FishScroller.vue";
+import SkillCard from "@/components/SkillCard.vue";
+import FishStar from "@/components/generic/FishStar.vue";
+import FishAvatar from "@/components/generic/FishAvatar.vue";
+import FishSpacer from "@/components/generic/FishSpacer.vue";
+import BottomCampFire from "@/components/BottomCampFire.vue";
+import FishLoader from "@/components/generic/FishLoader.vue";
+import { getPackages } from "@/services/PackageService";
+import { getSkills } from "@/services/SkillsService";
+import { getProjects } from "@/services/ProjectService";
 
 export default {
   components: {
     FishAvatar,
     FishStar,
     SkillsOverview,
-    FishCard,
+    FishCardSimple,
     FishDivider,
     FishScroller,
     SkillCard,
     FishSpacer,
     FontAwesomeIcon,
     BottomCampFire,
-    FishHot,
     FishLoader,
   },
   data() {
@@ -139,6 +161,7 @@ export default {
         display: "flex",
       },
       skills: [],
+      isPackageLoading: false,
       isProjectLoading: false,
       isSkillLoading: false,
     };
@@ -197,9 +220,20 @@ export default {
         this.isSkillLoading = false;
       }
     },
+    async loadPackages() {
+      try {
+        this.isPackageLoading = true;
+        this.packages = await getPackages();
+      } catch (err) {
+        alert(err.message);
+      } finally {
+        this.isPackageLoading = false;
+      }
+    },
   },
   created() {
     // TODO: Call these methods via the scroll controller based on scrolling position instead
+    this.loadPackages();
     this.loadProjects();
     this.loadSkills();
   },
@@ -226,6 +260,8 @@ section {
   min-height: 100vh;
   padding-top: var(--section-gap);
   padding-bottom: var(--section-gap);
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
 #tagline {
@@ -233,45 +269,44 @@ section {
   height: 50vh;
 }
 
-#projects > div {
+#section-packages > div {
   display: grid;
   justify-content: center;
-  grid-template-columns: auto auto;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 4rem;
-}
-
-#projects > div > div {
-  position: relative;
   width: 100%;
-  height: 100%;
 }
 
-#skills > div.skills-wrapper {
-  padding-left: 80px;
-  padding-right: 80px;
+#section-projects > div {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 4rem;
+  width: 100%;
+}
+
+#section-skills > div.skills-wrapper {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
   gap: 50px;
 }
 
-#skills > div > div {
+#section-skills > div > div {
   flex: 1 auto;
 }
 
 @media (max-width: 1024px) {
-  #projects > div {
+  #section-packages > div {
     grid-template-columns: auto;
   }
 
-  #skills > div {
-    margin: 0px 16px;
-    gap: 20px;
+  #section-projects > div {
+    grid-template-columns: auto;
   }
 
-  #skills > div.skills-wrapper {
-    padding-left: 20px;
-    padding-right: 20px;
+  #section-skills > div {
+    gap: 20px;
   }
 }
 </style>

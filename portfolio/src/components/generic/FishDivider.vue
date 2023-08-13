@@ -13,6 +13,9 @@ export default {
 </script>
 
 <style scoped>
+.divider-wrapper > span {
+  font-size: 1.5rem;
+}
 .divider-wrapper {
   display: grid;
   grid-template-columns: 1fr auto 1fr;

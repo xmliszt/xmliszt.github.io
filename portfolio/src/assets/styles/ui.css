@@ -25,6 +25,6 @@
 
 @media (max-width: 578px) {
   :root {
-    --section-gap: 20px;
+    --section-gap: 40px;
   }
 }

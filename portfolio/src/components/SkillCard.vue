@@ -1,5 +1,5 @@
 <template>
-  <div class="skill-card drop-shadow-dark hover-effect">
+  <div class="skill-card drop-shadow-dark">
     <div class="card-header" aria-label="skill category">
       <h1>{{ title.toUpperCase() }}</h1>
     </div>
