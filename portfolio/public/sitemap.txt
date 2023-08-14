@@ -1,1 +1,5 @@
 https://xmliszt.github.io/
+https://xmliszt.github.io/#tagline
+https://xmliszt.github.io/#packages
+https://xmliszt.github.io/#projects
+https://xmliszt.github.io/#skills
