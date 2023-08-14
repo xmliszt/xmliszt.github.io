@@ -27,7 +27,8 @@ export default {
   padding: 20px;
   padding-top: 0px;
   border-radius: 25px;
-  background-color: var(--color-white);
+  background-color: #0f1b1d;
+  color: #0f1b1d;
 }
 .skill-card .card-header {
   word-wrap: normal;
@@ -36,7 +37,7 @@ export default {
 .card-header h1 {
   font-weight: bolder;
   font-size: var(--font-large);
-  background: linear-gradient(to right, #f918b1f7, #9718f9f7 50%, #32d6ff 100%);
+  background: linear-gradient(to right, #00f7fff7, #9000ff 150%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -51,11 +52,11 @@ export default {
 .card-body span {
   padding: 5px 10px;
   border-radius: 24px;
-  background: linear-gradient(to right, #f918b1f7, #9718f9f7 50%, #32d6ff 100%);
+  background: linear-gradient(to right, #00f7fff7, #9000ff 150%);
 }
 
 .card-body span::before {
-  content: "//";
+  content: "#";
 }
 @media (max-width: 567px) {
   .skill-card {

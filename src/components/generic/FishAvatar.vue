@@ -5,11 +5,11 @@
 </template>
 
 <script>
-import avatarImg from "/src/assets/images/avatar.jpeg";
 export default {
   data() {
     return {
-      imgUrl: avatarImg,
+      imgUrl:
+        "https://github.com/xmliszt/resources/blob/main/portfolio/avatar.jpeg?raw=true",
       imgAlt: "No Image",
       githubUrl: "https://github.com/xmliszt",
     };

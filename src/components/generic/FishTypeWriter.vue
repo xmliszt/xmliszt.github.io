@@ -100,7 +100,7 @@ export default {
   text-align: center;
   font-weight: bold;
   font-size: 2.5rem;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: #0f1b1d;
   padding: 10px 20px;
   margin: 20px;
   border-radius: 20px;

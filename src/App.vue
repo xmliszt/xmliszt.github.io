@@ -430,7 +430,8 @@ section {
 }
 
 .parallax-mountain > span {
-  background: url("/src/assets/images/bg-mount.png") no-repeat top center;
+  background: url("https://github.com/xmliszt/resources/blob/main/portfolio/bg-mount.png?raw=true")
+    no-repeat top center;
   background-size: cover;
   border: none;
   width: 100%;
@@ -439,7 +440,8 @@ section {
 .parallax-bottom > span {
   height: 100%;
   width: 100%;
-  background: url("/src/assets/images/bg-header.jpg") top center;
+  background: url("https://github.com/xmliszt/resources/blob/main/portfolio/bg-header.jpg?raw=true")
+    top center;
   background-size: cover;
   pointer-events: none;
 }
