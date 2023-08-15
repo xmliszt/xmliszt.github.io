@@ -9,7 +9,7 @@ export default {
   data() {
     return {
       imgUrl:
-        "https://github.com/xmliszt/resources/blob/main/portfolio/avatar.jpeg?raw=true",
+        "https://github.com/xmliszt/resources/blob/main/portfolio/avatar.jpg?raw=true",
       imgAlt: "No Image",
       githubUrl: "https://github.com/xmliszt",
     };
