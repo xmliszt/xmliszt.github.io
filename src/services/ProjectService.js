@@ -9,10 +9,12 @@ export async function getProjects() {
         snapshot.docs.map((doc) => {
           result.push(doc.data());
         });
-        result.sort((a) => {
-          if (a.hot || false) {
-            return -1;
+        result.sort((a, b) => {
+          const hotDiff = Number(b.hot ?? false) - Number(a.hot ?? false);
+          if (hotDiff === 0) {
+            return (a.priority ?? 999) - (b.priority ?? 999);
           }
+          return hotDiff;
         });
         res(result);
       })
