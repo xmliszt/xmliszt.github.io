@@ -7,7 +7,12 @@
     <FishHot label="HOT" v-show="project.hot" />
     <img class="image" :src="project.imgUrl" alt="project thumbnail" />
     <div class="bottom">
-      <div class="title" aria-label="project title">{{ project.title }}</div>
+      <div class="title" aria-label="project title">
+        {{ project.title }}
+        <span v-show="project.titleTag !== undefined" class="title-subtag"
+          ><img alt="Static Badge" :src="project.titleTag" />
+        </span>
+      </div>
       <div class="details" aria-label="project details">
         {{ project.details }}
       </div>
