@@ -1,5 +1,5 @@
 <template>
-  <div class="avatar drop-shadow-light morph-hover-effect" @click="openGithub">
+  <div class="avatar drop-shadow-light" @click="openGithub">
     <img aria-label="profile image" :src="imgUrl" :alt="imgAlt" />
   </div>
 </template>
@@ -11,12 +11,12 @@ export default {
       imgUrl:
         "https://github.com/xmliszt/resources/blob/main/portfolio/avatar.jpg?raw=true",
       imgAlt: "No Image",
-      githubUrl: "https://github.com/xmliszt",
+      githubUrl: "/blogs",
     };
   },
   methods: {
     openGithub() {
-      window.open(this.githubUrl, "_blank");
+      window.open(this.githubUrl);
     },
   },
 };
@@ -54,5 +54,7 @@ export default {
 .avatar img {
   width: 120%;
   height: 120%;
+  opacity: 1;
+  transition: opacity 0.35s ease-in-out;
 }
 </style>

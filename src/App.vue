@@ -43,6 +43,13 @@
       >
         Skills
       </button>
+      <button
+        id="blog-button"
+        aria-label="navigate to my blogs"
+        @click="redirectTo('/blogs')"
+      >
+        Blogs
+      </button>
     </div>
     <div class="parallax-bottom" :style="parallaxBottomStyle">
       <span role="img" aria-label="Background Sky"></span>
@@ -53,8 +60,11 @@
     <FishAvatar class="parallax-avatar" ref="avatarView" />
     <div class="parallax-title">
       <h1 aria-label="My greeting to you">{{ landingTitle }}</h1>
+      <p aria-label="Subtitle">{{ landingSubtitle }}</p>
+      <a href="/blogs"
+        ><button class="parallax-button">I Blog About EdTech 🎓</button></a
+      >
     </div>
-    <FishSpacer height="50vh" />
     <div class="parallax-mountain">
       <span role="img" aria-label="Mountain Parallax"></span>
     </div>
@@ -146,7 +156,9 @@ export default {
   data() {
     return {
       isMenuOpen: false,
-      landingTitle: "Hi 🙌🏻 I'm Li Yuxuan. I am a Software Engineer. 💻",
+      landingTitle: "Hi 🙌🏻 I'm Li Yuxuan",
+      landingSubtitle:
+        "Software Engineer | Elevating Learning Experiences Worldwide 🎓",
       authBtnOpacity: 1,
       authBtnHidden: false,
       projects: [],
@@ -173,6 +185,9 @@ export default {
         menuBody.classList.add("show");
         this.isMenuOpen = true;
       }
+    },
+    redirectTo(href) {
+      location.href = href;
     },
     navigateTo(hash) {
       location.hash = "#" + hash;
@@ -359,6 +374,25 @@ section {
   box-shadow: rgba(255, 255, 255, 0.5) 0px 0px 10px 0px;
 }
 
+.menu-body button#blog-button {
+  width: 100%;
+  height: 30px;
+  margin: 0px;
+  padding: 0px;
+  border-radius: 20px;
+  border-width: 1px;
+  color: black;
+  background: rgba(122, 255, 246, 0.275);
+  box-shadow: rgba(255, 255, 255, 0.5) 0px 0px 10px 0px;
+}
+
+.menu-body button a {
+  text-decoration: none;
+  color: inherit;
+  font-size: inherit;
+  background: transparent;
+}
+
 .menu button {
   width: 50px;
   height: 50px;
@@ -395,25 +429,35 @@ section {
 }
 .parallax-title {
   position: fixed;
-  z-index: -1;
-  width: 60vw;
-  top: 30vh;
+  z-index: 0;
+  width: 80vw;
+  top: 25vh;
   left: 10vw;
   animation: floating 5s ease-in-out infinite;
   animation-delay: 1s;
 }
+.parallax-title > a {
+  text-decoration: none;
+}
+.parallax-title > a > button {
+  z-index: 999;
+  margin-top: 1rem;
+  margin-left: 0;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+}
 .parallax-avatar {
   position: fixed;
   z-index: 1;
-  top: 15vh;
+  top: 10vh;
   right: 20vw;
   animation: floating 5s ease-in-out infinite;
 }
 .minimized {
-  width: 25px !important;
-  height: 25px !important;
   top: 20px !important;
   right: 15px !important;
+  width: 25px !important;
+  height: 25px !important;
   border-width: 2px !important;
   transition-property: width, height, border-width, border-radius, top, right !important;
   transition-duration: 0.5s !important;
@@ -423,10 +467,15 @@ section {
   background-color: var(--color-black);
   width: 100%;
   overflow-x: hidden;
+  position: relative;
+  z-index: 1;
 }
 
 .parallax-mountain {
+  position: relative;
+  z-index: 1;
   display: flex;
+  margin-top: 50vh;
 }
 
 .parallax-mountain > span {

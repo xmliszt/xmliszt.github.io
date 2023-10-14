@@ -75,3 +75,26 @@ footer > p {
   margin: 0px;
   font-weight: 200;
 }
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+}
+
+header,
+header > p {
+  text-align: center;
+  color: var(--primary-dark);
+  padding: 16px;
+  margin: 0px;
+  font-weight: 200;
+}
+
+@media (max-width: 1024px) {
+  header {
+    display: none;
+  }
+}
