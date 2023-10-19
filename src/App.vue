@@ -476,6 +476,7 @@ section {
   z-index: 1;
   display: flex;
   margin-top: 50vh;
+  pointer-events: none;
 }
 
 .parallax-mountain > span {
