@@ -158,7 +158,7 @@ export default {
       isMenuOpen: false,
       landingTitle: "Hi 🙌🏻 I'm Li Yuxuan",
       landingSubtitle:
-        "Software Engineer | Elevating Learning Experiences Worldwide 🎓",
+        "a software engineer, who loves about creative learning 🎓",
       authBtnOpacity: 1,
       authBtnHidden: false,
       projects: [],
